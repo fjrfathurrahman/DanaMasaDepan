@@ -3,6 +3,7 @@
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
+import { ThemeProvider } from 'next-themes'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,7 +15,7 @@ const queryClient = new QueryClient({
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <ThemeProvider attribute="class">
       <QueryClientProvider client={queryClient}>
         <ProgressBar
           height="4px"
@@ -25,6 +26,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         <Toaster />
         {children}
       </QueryClientProvider>
-    </>
+    </ThemeProvider>
   );
 }

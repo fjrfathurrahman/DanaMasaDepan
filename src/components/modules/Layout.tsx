@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils/cn";
 
 const Section: React.FC<LayoutProps> = ({ children, className, sizing, spacing, flexbox, bg, bgSecondary, ...props}) => {
   const backgroundClasses = bgSecondary ? 'bg-lightSecondary dark:bg-darkSecondary' : '';
-  const classes = cn('max-w-full overflow-hidden', bg, sizing, spacing, flexbox, className, backgroundClasses);
+  const classes = cn('max-w-full', bg, sizing, spacing, flexbox, className, backgroundClasses);
   
   return (
     <div className={classes} {...props}>

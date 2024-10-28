@@ -1,5 +1,5 @@
 import HERO from "@/app/public/HERO.png";
-import STARTSAVING from '@/app/public/STARTSAVING.png';
+import STARTSAVING from '@/app/public/StartSaving.png';
 import ROCKET from '@/app/public/ROCKET.png';
 import { Icons } from "./icons";
 

@@ -13,6 +13,8 @@ import {
 import Icon from "../common/Icon";
 import { usePathname } from "next/navigation";
 import { Resource } from "@/lib/resource";
+import { IconType } from "react-icons";
+import Link from "next/link";
 
 export const Navbar = () => {
   return (
@@ -23,7 +25,7 @@ export const Navbar = () => {
 
           <div className="flex items-center gap-3">
             <ToggleTheme />
-            <DropdownMenus />
+            <DropdownMenus menu={Resource.dMenu.links} />
           </div>
         </div>
       </Layout.Container>
@@ -31,7 +33,7 @@ export const Navbar = () => {
   );
 };
 
-export const DropdownMenus = () => {
+export const DropdownMenus = ({menu}: {menu: {title: string; href: string; icon?: IconType | null}[]}) => {
   const path = usePathname();
 
   return (
@@ -42,14 +44,16 @@ export const DropdownMenus = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Menu Links">
-        {Resource.dMenu.links.map((item) => (
+        {menu.map((item) => (
           <DropdownItem
             key={item.title}
             color={path === item.href ? "primary" : "default"}
             className={path === item.href ? "text-primary" : undefined}
-            startContent={item.icon ? <Icon icon={item?.icon} size="sm" /> : null}
+            startContent={item.icon ? <Icon icon={item.icon as unknown as IconType} size="sm" /> : null}
           >
-            {item.title}
+            <Link href={item.href} passHref>
+              {item.title}
+            </Link>
           </DropdownItem>
         ))}
       </DropdownMenu>

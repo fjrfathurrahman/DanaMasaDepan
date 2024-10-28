@@ -11,7 +11,7 @@ type ShemaAuthentication = z.infer<typeof AuthenticationShema>;
 const CostumerShema = z.object({
   nisn: z.string().min(3, 'NISN minimal 3 karakter').length(11, 'NISN harus 11 karakter'),
   name: z.string().min(3, 'Nama minimal 3 karakter').max(225, 'nama maksimal 225 karakter'),
-  gender: z.enum(['Laki-laki', 'Perempuan',]),
+  gender: z.enum(['Laki-Laki', 'Perempuan',]),
   major: z.string().min(3, 'Jurusan minimal 3 karakter').max(225, 'Jurusan maksimal 225 karakter'),
   class: z.enum(['X', 'XI', 'XII']),
   address: z.string().min(3, 'Alamat minimal 3 karakter').max(225, 'Alamat maksimal 225 karakter'),

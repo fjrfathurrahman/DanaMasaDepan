@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
 import usePostNasabah from "@/lib/hooks/nasabah/usePostNasabah";
-import { Layout } from "@/components/modules/import";
 import { CostumerShema, ShemaCostumer } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@nextui-org/react";
@@ -30,14 +29,10 @@ export default function TambahNasabah() {
   };
 
   return (
-    <Layout.Container>
       <FormProvider {...methods}>
-        <form
-          onSubmit={methods.handleSubmit(onSubmit)}
-          className="max-w-[640px] mx-auto"
-        >
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
           <div className="border-b pb-4 space-y-2.5">
-            <h2>Welcome Admin</h2>
+            <h2>Tambah Nasabah</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Praesentium adipisci alias veritatis corporis velit doloremque
@@ -58,23 +53,20 @@ export default function TambahNasabah() {
             ))}
           </div>
 
-          <div className="*:w-full *:font-semibold space-y-2.5">
-            <Button
-              type="submit"
-              color="primary"
-              variant="solid"
-              isLoading={methods.formState.isSubmitting || isPending}
-              disabled={methods.formState.isSubmitting || isPending}
-            >
-              {methods.formState.isSubmitting || isPending
-                ? "Loading..."
-                : "Submit"}
-            </Button>
-            <Button variant="flat">Kembali Ke Home</Button>
-          </div>
+          <Button
+            type="submit"
+            color="primary"
+            variant="solid"
+            className="w-full font-semibold"
+            isLoading={methods.formState.isSubmitting || isPending}
+            disabled={methods.formState.isSubmitting || isPending}
+          >
+            {methods.formState.isSubmitting || isPending
+              ? "Loading..."
+              : "Submit"}
+          </Button>
         </form>
       </FormProvider>
-    </Layout.Container>
   );
 }
 

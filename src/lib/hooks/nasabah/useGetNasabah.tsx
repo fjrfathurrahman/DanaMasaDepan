@@ -5,7 +5,7 @@ export default function useGetNasabah(id?: string) {
   
   const endpoint = id ? `/customers/${id}` : `/customers`
 
-  const { data: response } = useQuery({
+  const { data: response, status } = useQuery({
     queryKey: [endpoint],
     queryFn: async () => {
       const response = await axiosInstance.get(endpoint);
@@ -17,8 +17,10 @@ export default function useGetNasabah(id?: string) {
   })
 
   return {
-    response,
-    data: response?.data
+    status,
+    result: response,
+    response: response?.data,
+    data: response?.data.data
   }
 
 }
