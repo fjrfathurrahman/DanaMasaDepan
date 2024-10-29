@@ -1,12 +1,12 @@
 import HERO from "@/app/public/HERO.png";
-// import STARTSAVING from '@/app/public/SAVING.png';
+import STARTSAVING from '@/app/public/SAVING.png';
 import ROCKET from '@/app/public/ROCKET.png';
 import { Icons } from "./icons";
 
 export const Resource = {
   dImage: {
     HERO,
-    // STARTSAVING,
+    STARTSAVING,
     ROCKET,
   },
   dIcons: {
@@ -183,13 +183,13 @@ export const Inputs ={
       element: "text" as const,
       placeholder: "Masukan ID Customer",
     },
-    {
-      label: "Admin ID",
-      name: "admin_id",
-      type: "number",
-      element: "text" as const,
-      placeholder: "Masukan ID Admin",
-    },
+    // {
+    //   label: "Admin ID",
+    //   name: "admin_id",
+    //   type: "number",
+    //   element: "text" as const,
+    //   placeholder: "Masukan ID Admin",
+    // },
     {
       label: "Tipe Transaksi",
       name: "type",

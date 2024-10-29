@@ -6,7 +6,7 @@ import Image from "next/image"
 export const StartSaving = () => {
   return (
     <Layout.Container>
-      <Image src={Resource.dImage.ROCKET} alt="image" height={450} quality={100} className="mx-auto" />
+      <Image src={Resource.dImage.STARTSAVING} alt="image" height={450} quality={100} className="mx-auto" />
       <div className="text-center md:w-2/3 mx-auto space-y-4">
         <h1 className="font-bold">Mulai Menabung <br /> Sekarang!</h1>
         <p>Masa depan dimulai hari ini! Mulailah menabung sekarang dan wujudkan impian Anda dengan layanan tabungan kami yang fleksibel dan menguntungkan.</p>

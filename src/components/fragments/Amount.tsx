@@ -24,19 +24,19 @@ const Amount = () => {
         <h6>Ringkasan Saldo</h6>
       </div>
 
-      <Layout.Box className="flex items-center flex-col gap-6">
+      <Layout.Box className="flex items-center md:flex-row flex-col gap-6">
 
-        <div className="bg-gradient-to-tr from-blue-900 to-sky-400 text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max">
+        <div className="bg-gradient-to-bl from-[#705DF8] to-[#3A2A85] text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max shadow-sm">
           <h5 className="font-bold">{totalBalance ?? 0}</h5>
           <small>Total Jumlah Saldo</small>
         </div>
         
-        <div className="bg-gradient-to-tr from-blue-900 to-sky-400 text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max">
+        <div className="bg-gradient-to-bl from-[#FFE827] to-[#88590b] text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max shadow-sm">
           <h5 className="font-bold">{totalDeposit ?? 0}</h5>
           <small>Total Deposit</small>
         </div>
         
-        <div className="bg-gradient-to-tr from-blue-900 to-sky-400 text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max">
+        <div className="bg-gradient-to-bl from-[#F20C35] to-[#8B1127] text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max shadow-sm">
           <h5 className="font-bold">{totalWithdrawal ?? 0}</h5>
           <small>Total Penarikan Saldo</small>
         </div>

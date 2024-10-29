@@ -10,9 +10,12 @@ export default function useLoginAdmin() {
     mutationFn: async (formData: FormData) => {
       const response = axiosInstance.post("/login", formData);
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      return response;
+      return (await response).data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem("adminId", JSON.stringify(data.data.id));
+      
       router.push("/dashboard");
       toast.success("Login berhasil!");
     },

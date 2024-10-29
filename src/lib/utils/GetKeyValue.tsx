@@ -64,9 +64,9 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
 
     case "action":
       return (
-        <ButtonGroup className="w-full space-x-2 *:text-white">
+        <ButtonGroup>
           <Button isIconOnly color="warning">
-            <Link href={`/dashboard/detail${page}/${item.id}`}>
+            <Link href={`/dashboard/detail${page}/${item.id}`} className="text-white">
               <MdRemoveRedEye size={18} />
             </Link>
           </Button>

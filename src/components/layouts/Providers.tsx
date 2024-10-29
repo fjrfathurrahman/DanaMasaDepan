@@ -32,9 +32,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
         <AnimatedCursor
           innerSize={10} 
-          outerSize={30} 
-          color={theme === 'dark' ? "255, 255, 255": "0, 0, 0"}
-          outerAlpha={0.3} 
+          outerSize={25} 
+          color={theme === 'dark' ? "255, 255, 255": "75,85,99"}
+          outerAlpha={0.2} 
           innerScale={1.5} 
           outerScale={2} 
           clickables={[

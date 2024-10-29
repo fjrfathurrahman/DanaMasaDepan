@@ -22,7 +22,7 @@ export default function Transaksi() {
   const onSubmit = (data: ShemaTransaction) => {
     const formData = new FormData();
     formData.append("customer_id", data.customer_id.toString());
-    formData.append("admin_id", data.admin_id.toString());
+    formData.append("admin_id", localStorage.getItem("adminId")!);
     formData.append("amount", data.amount.toString());
     formData.append("type", data.type);
 

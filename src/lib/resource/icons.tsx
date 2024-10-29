@@ -4,10 +4,14 @@ import { AiOutlineHome } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import { IoInformationOutline } from "react-icons/io5";
+import { RiAdminLine } from "react-icons/ri";
+
 
 // Theme Icons
 import { MdOutlineWbSunny, MdSearch  } from "react-icons/md";
 import { LuMoonStar } from "react-icons/lu";
+import { MdOutlineSettings } from "react-icons/md";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 // Bank & Money Icons
 import { BsBank } from "react-icons/bs";
@@ -18,6 +22,8 @@ import { RiBankCardLine, RiMoneyPoundCircleLine } from "react-icons/ri";
 import { TbMoneybag } from "react-icons/tb";
 import { GrMoney } from "react-icons/gr";
 import { MdOutlineAttachMoney } from "react-icons/md";
+import { HiOutlineCash } from "react-icons/hi";
+import { FiUser } from "react-icons/fi";
 
 // Social Media Icons
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
@@ -33,6 +39,11 @@ import { BsInfoLg } from "react-icons/bs";
 
 
 export const Icons = {
+  RiLogoutCircleRLine,
+  MdOutlineSettings,
+  FiUser,
+  HiOutlineCash,
+  RiAdminLine,
   MdSearch,
   MdMenu,
   MdOutlineWbSunny,
@@ -60,5 +71,5 @@ export const Icons = {
   MdOutlineQuestionMark,
   IoInformationOutline,
   LuMessagesSquare,
-  BsInfoLg
+  BsInfoLg,
 }
