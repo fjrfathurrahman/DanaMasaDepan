@@ -1,52 +1,62 @@
 import useGetNasabah from "@/lib/hooks/nasabah/useGetNasabah";
 import useGetTransaction from "@/lib/hooks/transaksi/useGetTransaction";
-
-type Type = "deposit" | "withdrawal";
-
-interface Customer {
-  balance: number;
-}
-
-interface Transaction {
-  type: Type;
-  amount: number;
-  customer: Customer;
-}
+import { calculateTotalBalance, calculateTotalDeposit, calculateTotalWithdrawal } from "@/lib/utils/Total";
+import { Skeleton } from "@nextui-org/react";
+import { GrMoney } from "react-icons/gr";
+import { Layout } from "../modules/import";
 
 const Amount = () => {
   const { data: transactions, status } = useGetTransaction();
   const { data: customers } = useGetNasabah();
 
+  const totalDeposit = calculateTotalDeposit(transactions);
+  const totalWithdrawal = calculateTotalWithdrawal(transactions);
+  const totalBalance = calculateTotalBalance(customers);
 
-  if (status === "pending") return <div>Loading...</div>;
-  if (status === "error") return <div>Error fetching transactions</div>;
-
-  const totalDeposit = transactions
-    .filter((t: Transaction) => t.type === "deposit")
-    .reduce((sum: number, t: Transaction) => sum + t.amount, 0);
-
-  const totalWithdrawal = transactions
-    .filter((t: Transaction) => t.type === "withdrawal")
-    .reduce((sum: number, t: Transaction) => sum + t.amount, 0);
-
-  const totalBalance = customers && customers?.reduce((sum: number, customer: Customer) => {
-    return sum + customer.balance;
-  }, 0);
-
+  
+  if (status === "pending") return <Loading />;
+  
   return (
-    <div className="border-y py-8">
-      <div>
-        {/* icon */}
-        <h6>Overview</h6>
+    <div className="border-y py-8 space-y-4">
+     
+      <div className="flex gap-2 items-center">
+        <GrMoney size={20}/>
+        <h6>Ringkasan Saldo</h6>
       </div>
 
-      <div className="mt-4 flex gap-2 border p-2.5">
-        <span>Total Saldo: {totalBalance}</span>
-        <span>Total Pembayaran: {totalDeposit}</span>
-        <span>Total Penarikan: {totalWithdrawal}</span>
-      </div>
+      <Layout.Box className="flex items-center flex-col gap-6">
+
+        <div className="bg-gradient-to-tr from-blue-900 to-sky-400 text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max">
+          <h5 className="font-bold">{totalBalance ?? 0}</h5>
+          <small>Total Jumlah Saldo</small>
+        </div>
+        
+        <div className="bg-gradient-to-tr from-blue-900 to-sky-400 text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max">
+          <h5 className="font-bold">{totalDeposit ?? 0}</h5>
+          <small>Total Deposit</small>
+        </div>
+        
+        <div className="bg-gradient-to-tr from-blue-900 to-sky-400 text-white p-2 ps-4 pe-16 rounded-lg w-full md:w-max">
+          <h5 className="font-bold">{totalWithdrawal ?? 0}</h5>
+          <small>Total Penarikan Saldo</small>
+        </div>
+        
+      </Layout.Box>
     </div>
   );
 };
 
 export default Amount;
+
+function Loading() {
+  return (
+    <div className="border-y py-8 space-y-4">
+      <Skeleton className="bg-default-900 w-1/5 h-6 rounded-lg" />
+      <div className="flex gap-4">
+        {[1, 2, 3].map((i) => (
+          <Skeleton key={i} className="bg-default-900 w-3/4 h-6 rounded-lg" />
+        ))}
+      </div>
+    </div>
+  );
+}

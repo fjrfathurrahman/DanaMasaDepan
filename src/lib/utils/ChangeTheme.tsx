@@ -13,7 +13,6 @@ export const useInitializeTheme = () => {
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     const initialTheme = savedTheme || 'dark';
 
-    // Terapkan tema awal ke elemen <html> dan setel tema di Zustand
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
     if (initialTheme !== theme) {
       toggleTheme();
@@ -23,7 +22,7 @@ export const useInitializeTheme = () => {
 
 
 export const useTheme = create<ThemeState>((set) => ({
-  theme: 'dark', // Default ke "dark"
+  theme: 'dark',
   toggleTheme: () =>
     set((state) => {
       const newTheme = state.theme === 'light' ? 'dark' : 'light';

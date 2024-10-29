@@ -97,6 +97,11 @@ const Menu = [
     href: "/dashboard/admin",
   },
   {
+    name: "Transaksi",
+    title: "Transaksi",
+    href: "/dashboard/transaksi",
+  },
+  {
     title: "Profile",
     href: "/dashboard/profile",
     icon: null

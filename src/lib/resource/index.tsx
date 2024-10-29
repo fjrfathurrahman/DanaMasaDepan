@@ -1,12 +1,12 @@
 import HERO from "@/app/public/HERO.png";
-import STARTSAVING from '@/app/public/StartSaving.png';
+// import STARTSAVING from '@/app/public/SAVING.png';
 import ROCKET from '@/app/public/ROCKET.png';
 import { Icons } from "./icons";
 
 export const Resource = {
   dImage: {
     HERO,
-    STARTSAVING,
+    // STARTSAVING,
     ROCKET,
   },
   dIcons: {
@@ -173,3 +173,117 @@ export const Resource = {
     ],
   }
 };
+
+export const Inputs ={
+  Transaksi: [
+    {
+      label: "Customer ID",
+      name: "customer_id",
+      type: "number",
+      element: "text" as const,
+      placeholder: "Masukan ID Customer",
+    },
+    {
+      label: "Admin ID",
+      name: "admin_id",
+      type: "number",
+      element: "text" as const,
+      placeholder: "Masukan ID Admin",
+    },
+    {
+      label: "Tipe Transaksi",
+      name: "type",
+      type: "text",
+      element: "text" as const,
+      placeholder: "Masukan Tipe Transaksi",
+    },
+    {
+      label: "Jumlah Transaksi",
+      name: "amount",
+      type: "number",
+      element: "text" as const,
+      placeholder: "Masukan Jumlah Transaksi",
+    },
+  ],
+  Login : [
+    {
+      label: "Nama",
+      name: "name",
+      type: "text",
+      placeholder: "Masukan Nama Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Email",
+      name: "email",
+      type: "email",
+      placeholder: "Masukan Email",
+      element: "text" as const,
+    },
+    {
+      label: "Password",
+      name: "password",
+      type: "password",
+      placeholder: "Masukan Password",
+      element: "password" as const,
+    }
+  ],
+  Nasabah : [
+    {
+      label: "NISN",
+      name: "nisn",
+      type: "text",
+      placeholder: "Masukan NISN Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Nama",
+      name: "name",
+      type: "text",
+      placeholder: "Masukan Nama Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Jenis Kelamin",
+      name: "gender",
+      type: "text",
+      placeholder: "Masukan Jenis Kelamin Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Jurusan",
+      name: "major",
+      type: "text",
+      placeholder: "Masukan Jurusan Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Kelas",
+      name: "class",
+      type: "text",
+      placeholder: "Masukan Kelas Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Alamat",
+      name: "address",
+      type: "text",
+      placeholder: "Masukan Alamat Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Email",
+      name: "email",
+      type: "text",
+      placeholder: "Masukan Email Anda",
+      element: "text" as const,
+    },
+    {
+      label: "Nomor Telepon",
+      name: "phone",
+      type: "text",
+      placeholder: "Masukan Nomor Telepon Anda",
+      element: "text" as const,
+    },
+  ]
+}

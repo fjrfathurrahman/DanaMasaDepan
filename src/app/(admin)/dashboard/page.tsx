@@ -4,6 +4,7 @@ import Amount from "@/components/fragments/Amount";
 import Banner from "@/components/fragments/Banner";
 import TableData from "@/components/fragments/TableData";
 import useGetTransaction from "@/lib/hooks/transaksi/useGetTransaction";
+import { MdOutlineBackupTable } from "react-icons/md";
  
 const columns = [
   { key: "id", label: "ID" },
@@ -23,20 +24,13 @@ export default function Daashboard() {
       <Amount />
 
       <div className="space-y-4">
-        <div>
-          {/* icon */}
+        <div className="flex gap-2 items-center">
+          <MdOutlineBackupTable size={20}/>
           <h6>Table Data</h6>
         </div>
         <TableData data={data} status={status} columns={columns} page="Transaksi" />
       </div>
-{/* 
-      <div>
-        <h4>Statistic</h4>
-      </div>
-
-      <div>
-        <h4>Aktivitas Terbaru</h4>
-      </div> */}
+      
     </>
   );
 }

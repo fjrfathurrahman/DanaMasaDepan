@@ -6,11 +6,11 @@ import Link from "next/link";
 import TableData from "@/components/fragments/TableData";
 
 const columns = [
-  { key: "number", label: "No." },
+  { key: "id", label: "ID" },
   { key: "nisn", label: "NISN" },
   { key: "name", label: "Nama" },
   { key: "gender", label: "Jenis Kelamin" },
-  { key: "phone", label: "Nomor Telepon" },
+  { key: "balance", label: "Saldo" },
   { key: "action", label: "Aksi" },
 ];
 

@@ -1,6 +1,8 @@
-import ButtonActions from "@/components/fragments/ButtonActions";
-import { Chip } from "@nextui-org/react";
+import { ButtonGroup, Chip } from "@nextui-org/react";
 import { Page } from "../types/Types";
+import { Button } from "@nextui-org/react";
+import Link from "next/link";
+import { MdDelete, MdModeEdit, MdRemoveRedEye } from "react-icons/md";
 
 export interface RowTransactionProps {
   id: number;
@@ -36,31 +38,53 @@ interface RowProps extends RowTransactionProps, RowCostumersProps {
   [key: string]: unknown;
 }
 
-export default function GetKeyValue(item: RowProps, columnKey: string, index: number, page: Page, deleteItem?: (id: string) => void) {
+export default function GetKeyValue( item: RowProps, columnKey: string, index: number, page: Page, deleteItem?: (id: string) => void) {
   switch (columnKey) {
     case "id":
       return index + 1;
-    
-      case "customer_id":
-      return item.customer?.name; 
-    
-      case "admin_id":
+
+    case "customer_id":
+      return item.customer?.name;
+
+    case "admin_id":
       return item.admin?.name;
 
     case "type":
       return item.type === "deposit" ? (
-        <Chip color="success" variant="flat">Deposit</Chip>
+        <Chip color="success" variant="flat">
+          Deposit
+        </Chip>
       ) : item.type === "withdrawal" ? (
-        <Chip color="danger" variant="flat">Withdrawal</Chip>
+        <Chip color="danger" variant="flat">
+          Withdrawal
+        </Chip>
       ) : null;
     case "amount":
-      return "Rp. " + parseFloat((item.amount ?? 0).toString()).toFixed(2); 
+      return "Rp. " + parseFloat((item.amount ?? 0).toString()).toFixed(2);
 
-      case "action":
-        return ButtonActions({ id: item.id.toString(), onClick: deleteItem, page });
+    case "action":
+      return (
+        <ButtonGroup className="w-full space-x-2 *:text-white">
+          <Button isIconOnly color="warning">
+            <Link href={`/dashboard/detail${page}/${item.id}`}>
+              <MdRemoveRedEye size={18} />
+            </Link>
+          </Button>
+          <Button isIconOnly color="primary">
+            <Link href={`/dashboard/edit${page}/${item.id}`}>
+              <MdModeEdit size={18} />
+            </Link>
+          </Button>
+          <Button
+            isIconOnly
+            startContent={<MdDelete size={18} />}
+            color="danger"
+            onClick={() => deleteItem}
+          />
+        </ButtonGroup>
+      );
 
     default:
-      return item[columnKey as keyof RowTransactionProps]?? '-'; 
+      return item[columnKey as keyof RowTransactionProps] ?? "-";
   }
 }
-

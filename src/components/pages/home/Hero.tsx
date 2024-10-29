@@ -27,6 +27,7 @@ export const Hero = (): JSX.Element => {
             <Button startContent={<Icon icon={Resource.dIcons.search}/>} color="primary" size="lg" variant="solid" className="w-full font-semibold">
               <Link href="/search">CARI NASABAH</Link>
             </Button>
+            
             <Button startContent={<Icon icon={Resource.dIcons.dashboard}/>}  color="primary" size="lg" variant="bordered" className="w-full font-semibold">
               <Link href="/dashboard">DASHBOARD</Link>
             </Button>

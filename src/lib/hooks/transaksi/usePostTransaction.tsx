@@ -2,7 +2,7 @@ import { axiosInstance } from "@/lib/service/axios";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-export default function usePostTransaction() {
+export default function usePostTransaction(reset: () => void) {
 
   return useMutation({
     mutationFn: async (formData: FormData) => {
@@ -11,6 +11,7 @@ export default function usePostTransaction() {
       return response;
     },
     onSuccess: () => {
+      reset();
       toast.success("Aksi berhasil dilakukan");
     },
     onError: () => {
