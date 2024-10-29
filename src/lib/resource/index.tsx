@@ -134,7 +134,7 @@ export const Resource = {
       },
       {
         title: "Nasabah",
-        href: "/nasabah",
+        href: "/search",
         icon: Icons.FiUsers
       },
       {

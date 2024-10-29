@@ -1,19 +1,16 @@
 import { axiosInstance } from "@/lib/service/axios";
 import { useQuery } from "@tanstack/react-query";
 
-export default function useGetNasabah(id?: string) {
-  
-  const endpoint = id ? `/customers/${id}` : `/customers`
+export default function useGetAdmin() {
 
   const { data: response, status } = useQuery({
-    queryKey: id ? ["customers", id] : ["customers"],
+    queryKey: ["admins"],
     queryFn: async () => {
-      const response = await axiosInstance.get(endpoint);
+      const response = await axiosInstance.get("/admins");
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       return response;
-    }
-
+    },
   })
 
   return {
@@ -22,5 +19,5 @@ export default function useGetNasabah(id?: string) {
     response: response?.data,
     data: response?.data.data
   }
-
+  
 }

@@ -21,4 +21,28 @@ const CostumerShema = z.object({
 
 type ShemaCostumer = z.infer<typeof CostumerShema>;
 
-export { AuthenticationShema, type ShemaAuthentication, CostumerShema, type ShemaCostumer };
+const AddAdminSchema = z
+  .object({
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"], // Letakkan error di confirmPassword
+  });
+
+
+type ShemaAddAdmin = z.infer<typeof AddAdminSchema>
+
+const TransactionShema = z.object({
+  customer_id: z.string(),
+  admin_id: z.string(),
+  type: z.enum(['deposit', 'withdrawal']),
+  amount: z.string(),
+})
+
+type ShemaTransaction = z.infer<typeof TransactionShema>;
+
+export { AuthenticationShema, type ShemaAuthentication, CostumerShema, type ShemaCostumer, TransactionShema, type ShemaTransaction, AddAdminSchema, type ShemaAddAdmin };

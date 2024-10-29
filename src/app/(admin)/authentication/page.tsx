@@ -1,14 +1,14 @@
 "use client";
 
-import usePostAdmin from "@/lib/hooks/admin/usePostAdmin";
 import { AuthenticationShema, ShemaAuthentication } from "@/lib/schema";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@nextui-org/react";
 import { Layout } from "@/components/modules/import";
+import useLoginAdmin from "@/lib/hooks/admin/useLoginAdmin";
 
 export default function Authentication() {
-  const { mutate, isPending } = usePostAdmin();
+  const { mutate, isPending } = useLoginAdmin();
 
   const methods = useForm<ShemaAuthentication>({
     resolver: zodResolver(AuthenticationShema),

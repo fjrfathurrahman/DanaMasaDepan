@@ -1,7 +1,7 @@
 "use client";
 
 import { Layout } from "../modules/import";
-import { ToggleTheme } from "../fragments/ToggleTheme";
+import ToggleTheme  from "../fragments/ToggleTheme";
 import { Icons } from "@/lib/resource/icons";
 import {
   Dropdown,
@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 import { Resource } from "@/lib/resource";
 import { IconType } from "react-icons";
 import Link from "next/link";
+import formatDate from "@/lib/utils/FormatDate";
 
 export const Navbar = () => {
   return (
@@ -60,3 +61,54 @@ export const DropdownMenus = ({menu}: {menu: {title: string; href: string; icon?
     </Dropdown>
   );
 };
+
+export const NavbarDashboard = () => {
+  return (
+    <Layout.Box className="border-b pb-6 flex justify-between items-center">
+      <div>
+        <h4>Dashboard</h4>
+        <small>{formatDate()}</small>
+      </div>
+
+      <div className="flex gap-3">
+        <ToggleTheme />
+        <DropdownMenus menu={Menu} />
+      </div>
+    </Layout.Box>
+  );
+};
+
+
+
+const Menu = [
+  {
+    title: "Dashboard",
+    href: "/dashboard",
+    icon: null
+  },
+  {
+    title: "Nasabah",
+    href: "/dashboard/tableNasabah",
+    icon: null
+  },
+  {
+    name: "Admin",
+    title: "Admin",
+    href: "/dashboard/admin",
+  },
+  {
+    title: "Profile",
+    href: "/dashboard/profile",
+    icon: null
+  },
+  {
+    title: "Pengaturan",
+    href: "/dashboard/pengaturan",
+    icon: null
+  },
+  {
+    title: "Logout",
+    href: "/",
+    icon: null
+  }
+];

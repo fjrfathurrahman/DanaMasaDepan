@@ -41,7 +41,7 @@ export default function TambahNasabah() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 py-8 border-t">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8 border-t">
             {InputNasabah.map((item) => (
               <Input
                 key={item.name}
@@ -96,7 +96,7 @@ const InputNasabah = [
     placeholder: "Masukan Jurusan Anda",
   },
   {
-    label: "kelas",
+    label: "Kelas",
     name: "class",
     type: "text",
     placeholder: "Masukan Kelas Anda",

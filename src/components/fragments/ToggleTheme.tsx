@@ -1,12 +1,11 @@
 'use client';
 
-import { useInitializeTheme, useTheme } from "@/lib/utils/ChangeTheme";
+import { useTheme } from "@/lib/utils/ChangeTheme";
 import { Button } from "@nextui-org/react";
 import { Icons } from "@/lib/resource/icons";
 import Icon from "../common/Icon";
 
-export const ToggleTheme = () => {
-  useInitializeTheme();
+const ToggleTheme = () => {
   const { theme, toggleTheme } = useTheme();
   
   return (
@@ -17,3 +16,5 @@ export const ToggleTheme = () => {
     </Button>
   )
 }
+
+export default ToggleTheme

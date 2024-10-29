@@ -14,7 +14,7 @@ export default function usePostNasabah() {
       toast.success("Data berhasil ditambahkan");
     },
     onError: () => {
-      toast.error("Terjadi kesalahan");
+      toast.error("Terjadi kesalahan, silahkan coba lagi");
     },
   })
 

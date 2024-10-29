@@ -25,7 +25,7 @@ export const Hero = (): JSX.Element => {
           </p>
           <Layout.BoxFlex flexbox={['flex', 'flex-col', 'sm:flex-row', 'gap-4']} spacing={'my-4'}>
             <Button startContent={<Icon icon={Resource.dIcons.search}/>} color="primary" size="lg" variant="solid" className="w-full font-semibold">
-              <Link href="/nasabah">CARI NASABAH</Link>
+              <Link href="/search">CARI NASABAH</Link>
             </Button>
             <Button startContent={<Icon icon={Resource.dIcons.dashboard}/>}  color="primary" size="lg" variant="bordered" className="w-full font-semibold">
               <Link href="/dashboard">DASHBOARD</Link>
