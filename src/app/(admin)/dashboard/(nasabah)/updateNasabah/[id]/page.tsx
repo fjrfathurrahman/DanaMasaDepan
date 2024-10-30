@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Field from "@/components/common/Field";
 import { Form } from "@/components/fragments/Form";
@@ -19,7 +19,7 @@ export default function UpdateNasabah({ params }: { params: { id: string } }) {
   const onSubmit = (data: ShemaCostumer) => {
     const formData = new FormData();
 
-    formData.append('_method', 'PUT');
+    formData.append("_method", "PUT");
     formData.append("nisn", data.nisn);
     formData.append("name", data.name);
     formData.append("gender", data.gender);
@@ -29,12 +29,21 @@ export default function UpdateNasabah({ params }: { params: { id: string } }) {
     formData.append("email", data.email);
     formData.append("phone", data.phone);
 
-    mutate({id: params.id, formData});
+    mutate({ id: params.id, formData });
   };
 
   return (
     <FormProvider {...methods}>
       <Form onSubmit={methods.handleSubmit(onSubmit)}>
+        <Form.Header>
+          <h2>Update Nasabah</h2>
+          <p>
+            Halaman ini untuk memperbarui informasi nasabah
+            yang sudah ada dalam sistem. Formulir yang disediakan dirancang
+            untuk mengedit data penting nasabah,
+          </p>
+        </Form.Header>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8 border-t">
           {Inputs.Nasabah.map((item) => (
             <Field key={item.name} {...item} />

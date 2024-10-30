@@ -1,9 +1,9 @@
+import { Layout } from "@/components/modules/import";
 import useGetNasabah from "@/lib/hooks/nasabah/useGetNasabah";
 import useGetTransaction from "@/lib/hooks/transaksi/useGetTransaction";
 import { calculateTotalBalance, calculateTotalDeposit, calculateTotalWithdrawal } from "@/lib/utils/Total";
 import { Skeleton } from "@nextui-org/react";
 import { GrMoney } from "react-icons/gr";
-import { Layout } from "../modules/import";
 
 const Amount = () => {
   const { data: transactions, status } = useGetTransaction();
@@ -17,7 +17,7 @@ const Amount = () => {
   if (status === "pending") return <Loading />;
   
   return (
-    <div className="border-y py-8 space-y-4">
+    <div className="border-b space-y-4 pb-8 mb-8">
      
       <div className="flex gap-2 items-center">
         <GrMoney size={20}/>

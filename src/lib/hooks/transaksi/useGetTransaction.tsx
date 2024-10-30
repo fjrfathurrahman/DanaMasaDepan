@@ -7,7 +7,7 @@ export default function useGetTransaction() {
     queryFn: async () => {
       const response = await axiosInstance.get("/transactions");
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
       return response;
     },
   })

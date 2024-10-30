@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply min-h-screen bg-light text-black dark:bg-dark dark:text-[#fffffe] font-medium;
+    @apply min-h-screen bg-light text-black dark:bg-dark dark:text-white font-medium;
   }
 
   h1 {

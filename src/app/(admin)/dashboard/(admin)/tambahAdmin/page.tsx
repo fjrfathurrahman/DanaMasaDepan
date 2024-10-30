@@ -1,9 +1,10 @@
+"use client";
 
-'use client';
 import usePostAdmin from "@/lib/hooks/admin/usePostAdmin";
+import { Form } from "@/components/fragments/Form";
 import { AddAdminSchema, ShemaAddAdmin } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -24,48 +25,37 @@ export default function TambahAdmin() {
     if (data.confirmPassword !== data.password) {
       toast.error("Password invalid");
     }
-    
+
     mutate(formData);
-  }
+  };
 
   return (
     <FormProvider {...methods}>
-       <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <div className="border-b pb-4 space-y-2.5">
-            <h2>Tambah Admin</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium adipisci alias veritatis corporis velit doloremque
-              sit! Id, totam tempore unde accusamus sed deleniti, minus saepe,
-              voluptate recusandae explicabo iusto optio.
-            </p>
-          </div>
+      <Form onSubmit={methods.handleSubmit(onSubmit)}>
+        <Form.Header>
+          <h2>Menambah Admin</h2>
+          <p>
+            Halaman ini untuk memasukkan informasi baru untuk admin. Anda akan
+            diminta untuk mengisi formulir dengan data yang diperlukan, seperti
+            nama, email, dan hak akses. Pastikan semua data yang dimasukkan
+            sudah benar dan valid sebelum menyimpan.
+          </p>
+        </Form.Header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8 border-t">
-            {Inputs.map((item) => (
-              <Input
-                key={item.name}
-                {...item}
-                isInvalid={Boolean(methods.formState.errors[item.name as keyof ShemaAddAdmin])}
-                errorMessage={methods.formState.errors[item.name as keyof ShemaAddAdmin]?.message}
-                {...methods.register(item.name as keyof ShemaAddAdmin)}
-              />
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8 border-t">
+          {Inputs.map((item) => (
+            <Input
+              key={item.name}
+              {...item}
+              isInvalid={Boolean(methods.formState.errors[item.name as keyof ShemaAddAdmin])}
+              errorMessage={methods.formState.errors[item.name as keyof ShemaAddAdmin]?.message}
+              {...methods.register(item.name as keyof ShemaAddAdmin)}
+            />
+          ))}
+        </div>
 
-          <Button
-            type="submit"
-            color="primary"
-            variant="solid"
-            className="w-full font-semibold"
-            isLoading={methods.formState.isSubmitting || isPending}
-            disabled={methods.formState.isSubmitting || isPending}
-          >
-            {methods.formState.isSubmitting || isPending
-              ? "Loading..."
-              : "Submit"}
-          </Button>
-        </form>
+        <Form.Footer isLoading={isPending || methods.formState.isSubmitting} />
+      </Form>
     </FormProvider>
   );
 }
@@ -94,5 +84,5 @@ const Inputs = [
     name: "confirmPassword",
     type: "password",
     placeholder: "Masukan Password Anda",
-  }
-]
+  },
+];

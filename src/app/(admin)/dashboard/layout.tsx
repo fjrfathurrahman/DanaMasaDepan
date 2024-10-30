@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // }
 
   return (
-    <Layout.Container className="max-w-[1024px] space-y-8">
+    <Layout.Container className="max-w-[1024px]">
       <NavbarDashboard />
       {children}
     </Layout.Container>

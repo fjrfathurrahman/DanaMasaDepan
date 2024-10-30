@@ -1,10 +1,14 @@
 "use client";
 
 import useGetNasabah from "@/lib/hooks/nasabah/useGetNasabah";
-import { Layout } from "@/components/modules/import";
 import Link from "next/link";
 import TableData from "@/components/fragments/TableData";
 import useDeleteNasabah from "@/lib/hooks/nasabah/useDeleteNasabah";
+import Icon from "@/components/common/Icon";
+import { Layout } from "@/components/modules/import";
+import { Button, Input } from "@nextui-org/react";
+import { toast } from "sonner";
+import { Icons } from "@/lib/resource/icons";
 
 const columns = [
   { key: "id", label: "ID" },
@@ -22,17 +26,40 @@ export default function TableNasabah() {
   const { mutate } = useDeleteNasabah();
 
   return (
-    <Layout.Box className="space-y-8">
-      <div>
-        <h2>Table Nasabah</h2>
+    <Layout.Box>
+      <div className="py-8 border-b space-y-2">
+        <h2>Nasabah</h2>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque vel
-          eos, magni illo natus ab ex fuga ratione voluptas ut?
+          Halaman ini menampilkan daftar lengkap nasabah yang
+          terdaftar dalam sistem. Setiap entri pada tabel mencakup informasi
+          penting seperti ID, NISN, nama, jenis kelamin, jurusan, kelas, alamat,
+          email, dan nomor telepon. Tabel ini dirancang untuk memudahkan
+          pengelolaan data nasabah, dengan opsi untuk melihat detail, mengedit,
+          atau menghapus informasi nasabah.
         </p>
-        <Link href="/dashboard/tambahNasabah">Tambah</Link>
+
+        <div className="flex gap-4 flex-wrap">
+          <Button color="primary" startContent={<Icons.FaPlus size={18} />}>
+            <Link href="/dashboard/tambahNasabah">Tambah nasabah</Link>
+          </Button>
+          <Button color="primary" variant="light" startContent={<Icons.MdOutlineRefresh size={18}/>} onClick={() => toast.info("Fitur belum tersedia")}>
+            Refresh Table
+          </Button>
+        </div>
       </div>
 
-      <TableData data={data} status={status} columns={columns} page="Nasabah"  deleteItem={(id) => mutate(id.toString())}/>
+      <div className="py-8 gap-4 flex items-center">
+        <Input startContent={<Icon icon={Icons.IoSearch} />} size="lg" placeholder="Cari akun Anda berdasarkan keyword" />
+        <Button variant="solid" color="primary" size="lg">Cari</Button>
+      </div>
+
+      <TableData
+        data={data}
+        status={status}
+        columns={columns}
+        page="Nasabah"
+        deleteItem={(id) => mutate(id.toString())}
+      />
     </Layout.Box>
   );
 }

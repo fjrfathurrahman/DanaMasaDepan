@@ -9,7 +9,7 @@ export default function useGetNasabah(id?: string) {
     queryKey: id ? ["customers", id] : ["customers"],
     queryFn: async () => {
       const response = await axiosInstance.get(endpoint);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
       return response;
     }

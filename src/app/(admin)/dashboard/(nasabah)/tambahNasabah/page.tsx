@@ -34,12 +34,11 @@ export default function TambahNasabah() {
     <FormProvider {...methods}>
       <Form onSubmit={methods.handleSubmit(onSubmit)}>
         <Form.Header>
-          <h2>Tambah Nasabah</h2>
+          <h2>Menambah Admin</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-            adipisci alias veritatis corporis velit doloremque sit! Id, totam
-            tempore unde accusamus sed deleniti, minus saepe, voluptate
-            recusandae explicabo iusto optio.
+            Halaman ini memungkinkan Anda untuk memasukkan informasi baru untuk
+            nasabah dalam sistem. Formulir yang disediakan dirancang untuk
+            mengumpulkan data penting yang diperlukan untuk pendaftaran nasabah,
           </p>
         </Form.Header>
 

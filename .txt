@@ -1,11 +1,6 @@
-FLOWCHART: 
-// - Create form add nasabah
-// - Read Table nasabah
-// - Read nasabah by ID
-// - Delete nasabah
-- Update nasabah
-
-// - Create form transaksi
-// - Read Table transaksi
-
-- Update transaksi
+FLOWCHART SELANJUTNYA:
+- SEARCH UNTUK NASABAH BERDASARKAN NISN, NAMA, JURUSAN DAN KELAS
+- PAGINATION UNTUK TABLE
+- DELETE ADMINS
+- UPDATE ADMINS
+- BUTTON LOGIN

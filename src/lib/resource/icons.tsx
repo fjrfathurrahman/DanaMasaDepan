@@ -5,6 +5,7 @@ import { FiUsers } from "react-icons/fi";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import { IoInformationOutline } from "react-icons/io5";
 import { RiAdminLine } from "react-icons/ri";
+import { MdOutlineRefresh } from "react-icons/md";
 
 
 // Theme Icons
@@ -36,9 +37,12 @@ import { IoSearch } from "react-icons/io5";
 // Additional Information Icons
 import { LuMessagesSquare } from "react-icons/lu";
 import { BsInfoLg } from "react-icons/bs";
+import { FaPlus } from "react-icons/fa6";
 
 
 export const Icons = {
+  MdOutlineRefresh,
+  FaPlus,
   RiLogoutCircleRLine,
   MdOutlineSettings,
   FiUser,

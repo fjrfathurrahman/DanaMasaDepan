@@ -25,6 +25,9 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
     case "amount":
       return formatCurrency(item.amount as number);
 
+    case "balance":
+      return formatCurrency(item.balance as number);
+
     case "action":
       return (
         <ButtonGroup>
