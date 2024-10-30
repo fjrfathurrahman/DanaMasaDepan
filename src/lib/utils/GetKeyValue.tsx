@@ -3,6 +3,7 @@ import { Page } from "../types/Types";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { MdDelete, MdModeEdit, MdRemoveRedEye } from "react-icons/md";
+import formatCurrency from "./Total";
 
 export interface RowTransactionProps {
   id: number;
@@ -51,16 +52,12 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
 
     case "type":
       return item.type === "deposit" ? (
-        <Chip color="success" variant="flat">
-          Deposit
-        </Chip>
+        <Chip color="success" variant="flat">Deposit</Chip>
       ) : item.type === "withdrawal" ? (
-        <Chip color="danger" variant="flat">
-          Withdrawal
-        </Chip>
+        <Chip color="danger" variant="flat">Withdrawal</Chip>
       ) : null;
     case "amount":
-      return "Rp. " + parseFloat((item.amount ?? 0).toString()).toFixed(2);
+      return formatCurrency(item.amount as number);
 
     case "action":
       return (
@@ -84,7 +81,16 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
         </ButtonGroup>
       );
 
+    case "view":
+      return (
+        <Button isIconOnly color="warning">
+          <Link href={`/dashboard/detail${page}/${item.id}`} className="text-white">
+            <MdRemoveRedEye size={18} />
+          </Link>
+        </Button>
+      )
+
     default:
-      return item[columnKey as keyof RowTransactionProps] ?? "-";
+      return item[columnKey as keyof RowTransactionProps] as React.ReactNode ?? "-";
   }
 }

@@ -42,8 +42,7 @@ function RenderCell(data: [], page: Page) {
           key={columnKey}
           className={"text-wrap text-ellipsis capitalize w-auto"}
         >
-          {GetKeyValue(item, columnKey as string, index, page, () => alert("Fitur tidak tersedia")) as React.ReactNode
-          }
+          {GetKeyValue(item, columnKey as string, index, page, () => alert("Fitur tidak tersedia"))}
         </TableCell>
       )}
     </TableRow>

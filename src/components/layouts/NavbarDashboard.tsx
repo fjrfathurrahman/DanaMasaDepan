@@ -46,15 +46,8 @@ export const NavbarDashboard = () => {
           <DropdownMenu aria-label="Menu Links">
             <DropdownSection title="Links" showDivider>
               {Menu.links.map((item) => (
-                <DropdownItem
-                  key={item.title}
-                  color={path === item.href ? "primary" : "default"}
-                  className={path === item.href ? "text-primary" : undefined}
-                  startContent={item.icon ? <Icon icon={item.icon} size="sm" /> : null}
-                >
-                  <Link href={item.href} passHref>
-                    {item.title}
-                  </Link>
+                <DropdownItem key={item.title} color={path === item.href ? "primary" : "default"} className={path === item.href ? "text-primary" : undefined} startContent={item.icon ? <Icon icon={item.icon} size="sm" /> : null}>
+                  <Link href={item.href} passHref>{item.title}</Link>
                 </DropdownItem>
               ))}
             </DropdownSection>
@@ -70,7 +63,7 @@ export const NavbarDashboard = () => {
                     item.icon ? <Icon icon={item.icon} size="sm" /> : null
                   }
                 >
-                  <button type="button" onClick={item.name === "Logout" ? () => logout : () => toast.info('Fitur belum tersedia')}>
+                  <button type="button" onClick={item.name === "Logout" ? () => logout() : () => toast.info('Fitur belum tersedia')}>
                     {item.title}
                   </button>
                 </DropdownItem>
