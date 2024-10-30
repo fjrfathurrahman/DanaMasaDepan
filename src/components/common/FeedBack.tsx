@@ -1,4 +1,4 @@
-const FeedBack = (status: string, amount: []) => {
+const Feedback = (status: string, amount: []) => {
 
   switch (status) {
     case 'pending':
@@ -16,4 +16,4 @@ const FeedBack = (status: string, amount: []) => {
 
 }
 
-export default FeedBack
+export default Feedback

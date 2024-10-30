@@ -1,45 +1,11 @@
 import { ButtonGroup, Chip } from "@nextui-org/react";
-import { Page } from "../types/Types";
+import { Page, RowProps } from "../types/Types";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { MdDelete, MdModeEdit, MdRemoveRedEye } from "react-icons/md";
 import formatCurrency from "./Total";
 
-export interface RowTransactionProps {
-  id: number;
-  customer_id?: number;
-  admin_id?: number;
-  type?: string;
-  amount?: number;
-  customer?: {
-    id: number;
-    name: string;
-    email: string;
-  };
-  admin?: {
-    id: number;
-    name: string;
-    email: string;
-  };
-  created_at?: string;
-  updated_at?: string;
-}
-
-export interface RowCostumersProps {
-  id: number;
-  number?: number;
-  name?: string;
-  email?: string;
-  phone?: string;
-  created_at?: string;
-  updated_at?: string;
-}
-
-interface RowProps extends RowTransactionProps, RowCostumersProps {
-  [key: string]: unknown;
-}
-
-export default function GetKeyValue( item: RowProps, columnKey: string, index: number, page: Page, deleteItem?: (id: string) => void) {
+export default function GetKeyValue( item: RowProps, columnKey: string, index: number, page: Page, deleteItem?: () => void) {
   switch (columnKey) {
     case "id":
       return index + 1;
@@ -68,7 +34,7 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
             </Link>
           </Button>
           <Button isIconOnly color="primary">
-            <Link href={`/dashboard/edit${page}/${item.id}`}>
+            <Link href={`/dashboard/update${page}/${item.id}`}>
               <MdModeEdit size={18} />
             </Link>
           </Button>
@@ -76,7 +42,7 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
             isIconOnly
             startContent={<MdDelete size={18} />}
             color="danger"
-            onClick={() => deleteItem}
+            onClick={deleteItem}
           />
         </ButtonGroup>
       );
@@ -84,13 +50,13 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
     case "view":
       return (
         <Button isIconOnly color="warning">
-          <Link href={`/dashboard/detail${page}/${item.id}`} className="text-white">
+          <Link href={`/detail${page}/${item.id}`} className="text-white">
             <MdRemoveRedEye size={18} />
           </Link>
         </Button>
       )
 
     default:
-      return item[columnKey as keyof RowTransactionProps] as React.ReactNode ?? "-";
+      return item[columnKey] as React.ReactNode ?? "-";
   }
 }

@@ -7,44 +7,39 @@ import {
   TableRow,
 } from "@nextui-org/react";
 import React from "react";
-import FeedBack from "../common/FeedBack";
 import GetKeyValue from "@/lib/utils/GetKeyValue";
-import { Page } from "@/lib/types/Types";
+import { Page, RowProps } from "@/lib/types/Types";
+import { toast } from "sonner";
+import Feedback from "../common/Feedback";
 
 interface TableDataProps {
   data: [];
   status: string;
   columns: { key: string; label: string }[];
   page: Page;
+  deleteItem?: (id: string | number) => void;
 }
 
-const TableData = ({ data, status, columns, page }: TableDataProps) => {
+const TableData = ({ data, status, columns, page, deleteItem = () => toast.info('Fitur belum tersedia') }: TableDataProps) => {
   return (
     <Table aria-label="Table" align="center">
       <TableHeader columns={columns}>
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
       </TableHeader>
 
-      <TableBody items={data} emptyContent={FeedBack(status, data)}>
-        {RenderCell(data, page)}
+      <TableBody items={data} emptyContent={Feedback(status, data)}>
+        {data?.map((item: RowProps, index: number) => (
+          <TableRow key={item.id} className="overflow-x-auto">
+            {(columnKey) => (
+              <TableCell key={columnKey} className={"text-wrap text-ellipsis capitalize w-auto"}>
+                {GetKeyValue(item, columnKey as string, index, page, () => deleteItem(item.id))}
+              </TableCell>
+            )}
+         </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
 };
 
 export default TableData;
-
-function RenderCell(data: [], page: Page) {
-  return data?.map((item, index: number) => (
-    <TableRow key={item} className="overflow-x-auto">
-      {(columnKey) => (
-        <TableCell
-          key={columnKey}
-          className={"text-wrap text-ellipsis capitalize w-auto"}
-        >
-          {GetKeyValue(item, columnKey as string, index, page, () => alert("Fitur tidak tersedia"))}
-        </TableCell>
-      )}
-    </TableRow>
-  ));
-}
