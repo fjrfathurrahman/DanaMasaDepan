@@ -10,7 +10,6 @@ import React from "react";
 import GetKeyValue from "@/lib/utils/GetKeyValue";
 import { Page, RowProps } from "@/lib/types/Types";
 import { toast } from "sonner";
-import Feedback from "../common/Feedback";
 
 interface TableDataProps {
   data: [];
@@ -27,7 +26,7 @@ const TableData = ({ data, status, columns, page, deleteItem = () => toast.info(
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
       </TableHeader>
 
-      <TableBody items={data} emptyContent={Feedback(status, data)}>
+      <TableBody items={data} emptyContent={status}>
         {data?.map((item: RowProps, index: number) => (
           <TableRow key={item.id} className="overflow-x-auto">
             {(columnKey) => (
