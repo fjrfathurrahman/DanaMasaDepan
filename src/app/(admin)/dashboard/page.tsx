@@ -23,8 +23,8 @@ export default function Daashboard() {
     <>
       <Banner />
       <Amount />
-      <Activity/>
       <TableTransaction />
+      <Activity/>
       <Statistics/>
     </>
   );

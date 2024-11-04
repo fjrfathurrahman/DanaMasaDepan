@@ -2,13 +2,22 @@
 
 import Icon from "@/components/common/Icon";
 import TableData from "@/components/fragments/TableData";
-import { Layout } from "@/components/modules/import";
 import useGetNasabah from "@/lib/hooks/nasabah/useGetNasabah";
+import filterDataByQuery from "@/lib/utils/FilterDataQuery";
+import { Layout } from "@/components/modules/import";
 import { Resource } from "@/lib/resource";
 import { Button, Input } from "@nextui-org/react";
+import { useState } from "react";
+import { RowCostumersProps, RowProps } from "@/lib/types/Types";
+
 
 export default function Search() {
-  const { data, status } = useGetNasabah();
+  const [query, setQuery] = useState<string>('');
+  const { data: allData, status } = useGetNasabah();
+  
+  const filterKeys = ['id', 'name', 'nisn', 'major', 'class', 'gender', 'email', 'phone', 'balance'] as (keyof RowCostumersProps)[];
+  const filteredData = filterDataByQuery(allData || [], query, filterKeys) as RowProps[];
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value);
 
   return (
     <Layout.Container spacing={'py-28'}>
@@ -18,11 +27,11 @@ export default function Search() {
       </div>
 
       <div className="py-8 gap-4 flex items-center">
-        <Input startContent={<Icon icon={Resource.dIcons.search} />} size="lg" placeholder="Cari akun Anda berdasarkan NISN, Nama, Jurusan, Kelas dan lain-lain" />
+        <Input startContent={<Icon icon={Resource.dIcons.search} />} size="lg" placeholder="Cari akun Anda berdasarkan NISN, Nama, Jurusan, Kelas dan lain-lain" onChange={handleSearch} />
         <Button variant="solid" color="primary" size="lg">Cari</Button>
       </div>
 
-      <TableData data={data} status={status} columns={columns} page="Nasabah" />
+      <TableData data={filteredData} status={status} columns={columns} page="Nasabah" />
     </Layout.Container>
   );
 }

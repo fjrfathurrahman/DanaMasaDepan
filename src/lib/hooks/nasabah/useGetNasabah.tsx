@@ -2,7 +2,6 @@ import { axiosInstance } from "@/lib/service/axios";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useGetNasabah(id?: string) {
-  
   const endpoint = id ? `/customers/${id}` : `/customers`
 
   const { data: response, status } = useQuery({

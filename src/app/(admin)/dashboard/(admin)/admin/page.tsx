@@ -2,12 +2,15 @@
 
 import Icon from "@/components/common/Icon";
 import TableData from "@/components/fragments/TableData";
-import { Layout } from "@/components/modules/import";
 import useGetAdmin from "@/lib/hooks/admin/useGetAdmin";
+import { Layout } from "@/components/modules/import";
 import { Icons } from "@/lib/resource/icons";
 import { Button, Input } from "@nextui-org/react";
-import Link from "next/link";
 import { toast } from "sonner";
+import Link from "next/link";
+import { useState } from "react";
+import { RowAdminProps, RowProps } from "@/lib/types/Types";
+import filterDataByQuery from "@/lib/utils/FilterDataQuery";
 
 const columns = [
   { key: "id", label: "ID" },
@@ -18,7 +21,13 @@ const columns = [
 ];
 
 export default function TableAdmin() {
-  const { data, status } = useGetAdmin();
+  const [query, setQuery] = useState<string>('');
+  const { data: allData, status } = useGetAdmin();
+  
+  const filterKeys = ['id', 'name', 'email', 'role'] as (keyof RowAdminProps)[];
+  const filteredData = filterDataByQuery(allData || [], query, filterKeys) as RowProps[];
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value);
+
 
   return (
     <Layout.Box>
@@ -36,29 +45,20 @@ export default function TableAdmin() {
           <Button color="primary" startContent={<Icons.FaPlus size={18} />}>
             <Link href="/dashboard/tambahAdmin">Tambah Admin</Link>
           </Button>
-          <Button
-            color="primary"
-            variant="bordered"
-            startContent={<Icons.MdOutlineRefresh size={18} />}
-            onClick={() => toast.info("Fitur belum tersedia")}
-          >
+          <Button color="primary" variant="bordered" startContent={<Icons.MdOutlineRefresh size={18} />} onClick={() => toast.info("Fitur belum tersedia")}>
             Refresh Table
           </Button>
         </div>
       </div>
 
       <div className="py-8 gap-4 flex items-center">
-        <Input
-          startContent={<Icon icon={Icons.IoSearch} />}
-          size="lg"
-          placeholder="Cari akun Anda berdasarkan keyword"
-        />
+        <Input onChange={handleSearch} startContent={<Icon icon={Icons.IoSearch} />} size="lg" placeholder="Cari akun Anda berdasarkan keyword"/>
         <Button variant="solid" color="primary" size="lg">
           Cari
         </Button>
       </div>
 
-      <TableData data={data} status={status} columns={columns} page="Admin" />
+      <TableData data={filteredData} status={status} columns={columns} page="Admin" />
     </Layout.Box>
   );
 }

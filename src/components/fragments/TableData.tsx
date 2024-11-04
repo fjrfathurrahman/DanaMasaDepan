@@ -12,7 +12,7 @@ import { Page, RowProps } from "@/lib/types/Types";
 import { toast } from "sonner";
 
 interface TableDataProps {
-  data: [];
+  data: RowProps[];
   status: string;
   columns: { key: string; label: string }[];
   page: Page;
@@ -26,7 +26,7 @@ const TableData = ({ data, status, columns, page, deleteItem = () => toast.info(
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
       </TableHeader>
 
-      <TableBody items={data} emptyContent={status}>
+      <TableBody items={data} emptyContent={status === 'error' ? 'Terjadi kesalahan pada server' : status === 'pending' ? 'Loading...' :  'Data tidak ditemukan'}>
         {data?.map((item: RowProps, index: number) => (
           <TableRow key={item.id} className="overflow-x-auto">
             {(columnKey) => (
