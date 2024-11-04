@@ -1,4 +1,5 @@
 import { Collaboration } from "@/components/pages/home/Collaboration";
+import { ContactMapForm } from "@/components/pages/home/ContactMapForm";
 import { Faq } from "@/components/pages/home/Faq";
 import { Hero } from "@/components/pages/home/Hero";
 import { Reviews } from "@/components/pages/home/Reviews";
@@ -12,6 +13,7 @@ export default function Home() {
       {/* Balance Section: Apa saja Keuntunganya */}
       <StartSaving />
       <Reviews />
+      <ContactMapForm/>
       <Faq />
     </>
   );

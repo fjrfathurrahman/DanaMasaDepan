@@ -1,6 +1,6 @@
 import HERO from "@/app/public/HERO.png";
-import STARTSAVING from '@/app/public/SAVING.png';
-import ROCKET from '@/app/public/ROCKET.png';
+import STARTSAVING from "@/app/public/SAVING.png";
+import ROCKET from "@/app/public/ROCKET.png";
 import { Icons } from "./icons";
 
 export const Resource = {
@@ -65,7 +65,7 @@ export const Resource = {
       icon: Icons.TbMoneybag,
     },
   ],
-  dFaq : [
+  dFaq: [
     {
       id: 1,
       title: "Apa itu Website Tabungan?",
@@ -74,17 +74,17 @@ export const Resource = {
     {
       id: 2,
       title: "Bagaimana Cara Mendaftar sebagai Nasabah?",
-      desc: "Untuk mendaftar sebagai nasabah, Anda dapat menghubungi pihak admin melalui halaman kontak atau mendaftar langsung di kantor cabang terdekat. Proses pendaftaran membutuhkan informasi seperti nama lengkap, nomor rekening, dan detail identitas lainnya."
+      desc: "Untuk mendaftar sebagai nasabah, Anda dapat menghubungi pihak admin melalui halaman kontak atau mendaftar langsung di kantor cabang terdekat. Proses pendaftaran membutuhkan informasi seperti nama lengkap, nomor rekening, dan detail identitas lainnya.",
     },
     {
       id: 3,
       title: "Apakah Data Nasabah Aman di Website Ini?",
-      desc: "Ya, kami menggunakan teknologi keamanan terbaik untuk memastikan semua data nasabah disimpan dengan aman. Semua informasi yang dikirimkan melalui website kami dienkripsi untuk melindungi dari akses yang tidak sah."
+      desc: "Ya, kami menggunakan teknologi keamanan terbaik untuk memastikan semua data nasabah disimpan dengan aman. Semua informasi yang dikirimkan melalui website kami dienkripsi untuk melindungi dari akses yang tidak sah.",
     },
     {
       id: 4,
       title: "Bagaimana Cara Menghubungi Admin?",
-      desc: "Anda bisa menghubungi admin melalui halaman kontak di website ini atau melalui alamat email dan nomor telepon yang tersedia. Kami siap membantu Anda dengan segala pertanyaan atau masalah yang Anda hadapi."
+      desc: "Anda bisa menghubungi admin melalui halaman kontak di website ini atau melalui alamat email dan nomor telepon yang tersedia. Kami siap membantu Anda dengan segala pertanyaan atau masalah yang Anda hadapi.",
     },
   ],
   dSosmed: [
@@ -125,32 +125,32 @@ export const Resource = {
       icon: Icons.PiTelegramLogo,
     },
   ],
-  dMenu : {
+  dMenu: {
     links: [
       {
         title: "Home",
         href: "/",
-        icon: Icons.AiOutlineHome
+        icon: Icons.AiOutlineHome,
       },
       {
         title: "Nasabah",
         href: "/search",
-        icon: Icons.FiUsers
+        icon: Icons.FiUsers,
       },
       {
         title: "Tentang Kami",
         href: "/tentang",
-        icon: Icons.BsInfoLg
+        icon: Icons.BsInfoLg,
       },
       {
         title: "FAQ",
         href: "/faq",
-        icon: Icons.MdOutlineQuestionMark
+        icon: Icons.MdOutlineQuestionMark,
       },
       {
         title: "Kontak",
         href: "/kontak",
-        icon: Icons.LuMessagesSquare
+        icon: Icons.LuMessagesSquare,
       },
     ],
     Services: [
@@ -171,10 +171,10 @@ export const Resource = {
         href: "/",
       },
     ],
-  }
+  },
 };
 
-export const Inputs ={
+export const Inputs = {
   Transaksi: [
     {
       label: "Customer ID",
@@ -205,7 +205,7 @@ export const Inputs ={
       placeholder: "Masukan Jumlah Transaksi",
     },
   ],
-  Login : [
+  Login: [
     {
       label: "Nama",
       name: "name",
@@ -226,9 +226,9 @@ export const Inputs ={
       type: "password",
       placeholder: "Masukan Password",
       element: "password" as const,
-    }
+    },
   ],
-  Nasabah : [
+  Nasabah: [
     {
       label: "NISN",
       name: "nisn",
@@ -285,5 +285,35 @@ export const Inputs ={
       placeholder: "Masukan Nomor Telepon Anda",
       element: "text" as const,
     },
-  ]
-}
+  ],
+  Contact: [
+    {
+      name: "subject",
+      type: "text",
+      placeholder: "Apa yang ingin anda tanyakan?",
+      label: "Subject",
+      element: "text" as const,
+    },
+    {
+      name: "name",
+      type: "text",
+      placeholder: "Masukan nama anda",
+      label: "Nama",
+      element: "text" as const,
+    },
+    {
+      name: "email",
+      type: "email",
+      placeholder: "Masukan email anda",
+      label: "Email",
+      element: "text" as const,
+    },
+    {
+      name: "message",
+      type: "text",
+      placeholder: "Tuliskan pesan anda disini",
+      label: "Pesan",
+      element: "textArea" as const,
+    },
+  ],
+};

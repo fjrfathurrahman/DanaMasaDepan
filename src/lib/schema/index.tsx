@@ -45,4 +45,13 @@ const TransactionShema = z.object({
 
 type ShemaTransaction = z.infer<typeof TransactionShema>;
 
-export { AuthenticationShema, type ShemaAuthentication, CostumerShema, type ShemaCostumer, TransactionShema, type ShemaTransaction, AddAdminSchema, type ShemaAddAdmin };
+const ContactUsShema = z.object({
+  subject: z.string().min(3, 'Subject minimal 3 karakter').max(225, 'Subject maksimal 225 karakter'),
+  name: z.string().min(3, 'Nama minimal 3 karakter').max(225, 'Nama maksimal 225 karakter'),
+  email: z.string().email().min(3, 'Email minimal 3 karakter').max(225, 'Email maksimal 225 karakter'),
+  message: z.string().min(3, 'Pesan minimal 3 karakter'),
+})
+
+type ShemaContactUs = z.infer<typeof ContactUsShema>;
+
+export { AuthenticationShema, type ShemaAuthentication, CostumerShema, type ShemaCostumer, TransactionShema, type ShemaTransaction, AddAdminSchema, type ShemaAddAdmin, ContactUsShema, type ShemaContactUs };

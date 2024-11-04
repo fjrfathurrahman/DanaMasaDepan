@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button, ButtonProps } from "@nextui-org/react";
 
 interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
 
 export const Form = ({ onSubmit, children }: FormProps) => {
   return (
-    <form onSubmit={onSubmit} className="mx-auto max-w-[1024px]">
+    <form onSubmit={onSubmit} className="mx-auto max-w-[1024px] space-y-6">
       {children}
     </form>
   );
@@ -18,10 +18,11 @@ const Header = ({ children }: { children: React.ReactNode }) => {
   return <div className="py-8 border-b space-y-2">{children}</div>;
 };
 
-const Footer = ({ children, isLoading }: { children?: React.ReactNode, isLoading: boolean }) => {
+const Footer = ({ children, isLoading, ...props }: { children?: React.ReactNode, isLoading: boolean } & ButtonProps) => {
   return (
     <div className="*:w-full *:font-semibold space-y-2.5">
       <Button
+        {...props}
         type="submit"
         color="primary"
         variant="solid"

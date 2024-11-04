@@ -1,11 +1,11 @@
 "use client";
 
-import { Input } from "@nextui-org/react";
+import { Input, Textarea } from "@nextui-org/react";
 import { useState } from "react";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { useFormContext } from "react-hook-form";
 
-const Field = ({ name, label, placeholder, type = "text", element}: RenderInputProps) => {
+const Field = ({ name, label, placeholder, type = "text", element }: RenderInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const { register, formState: { errors }} = useFormContext();
 
@@ -23,6 +23,9 @@ const Field = ({ name, label, placeholder, type = "text", element}: RenderInputP
 
   const renderField = () => {
     switch (element) {
+      case "textArea":
+        return <Textarea {...baseProps} {...register(name)} minRows={4} />;
+
       case "password":
         return (
           <Input
@@ -30,10 +33,7 @@ const Field = ({ name, label, placeholder, type = "text", element}: RenderInputP
             {...register(name)}
             type={showPassword ? "text" : "password"}
             endContent={
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-              >
+              <button type="button" onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? <VscEyeClosed /> : <VscEye />}
               </button>
             }

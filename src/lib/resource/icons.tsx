@@ -6,6 +6,7 @@ import { MdOutlineQuestionMark } from "react-icons/md";
 import { IoInformationOutline } from "react-icons/io5";
 import { RiAdminLine } from "react-icons/ri";
 import { MdOutlineRefresh } from "react-icons/md";
+import { MdOutlineLocationOn } from "react-icons/md";
 
 
 // Theme Icons
@@ -76,4 +77,5 @@ export const Icons = {
   IoInformationOutline,
   LuMessagesSquare,
   BsInfoLg,
+  MdOutlineLocationOn
 }
