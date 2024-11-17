@@ -7,17 +7,12 @@ import { Inputs } from "@/lib/resource";
 import { ShemaTransaction, TransactionShema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
+import useGetNasabah from "@/lib/hooks/nasabah/useGetNasabah";
 
 export default function Transaksi() {
-  
-  const methods = useForm<ShemaTransaction>({
-    resolver: zodResolver(TransactionShema),
-    
-    mode: "onChange",
-  });
-  
-  const { reset } = methods;
-  const { mutate, isPending } = usePostTransaction(reset);
+  const methods = useForm<ShemaTransaction>({resolver: zodResolver(TransactionShema),mode: "onChange",});
+  const { data: dataNasabah } = useGetNasabah()
+  const { mutate, isPending } = usePostTransaction(methods.reset);
 
   const onSubmit = (data: ShemaTransaction) => {
     const formData = new FormData();
@@ -28,6 +23,13 @@ export default function Transaksi() {
 
     mutate(formData);
   };
+
+  const getNasbahOptions = () => {
+    return dataNasabah?.map((item: { id: string, name: string}) => ({
+      key: item.id,
+      label: `${item.name}`,
+    })) || [];
+  }
 
   return (
     <FormProvider {...methods}>
@@ -42,7 +44,15 @@ export default function Transaksi() {
           </p>
         </Form.Header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8 border-t">
+        <div className="grid grid-cols-1 gap-4 py-4">
+          <Field
+            name="customer_id"
+            label="Pilih Nasabah"
+            placeholder="Pilih nasabah..."
+            element="select"
+            dynamicOptionsFetcher={getNasbahOptions}
+          />
+          
           {Inputs.Transaksi.map((item) => (
             <Field key={item.name} {...item} />
           ))}

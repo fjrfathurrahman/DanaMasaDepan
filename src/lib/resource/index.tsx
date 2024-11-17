@@ -177,13 +177,6 @@ export const Resource = {
 
 export const Inputs: Record<string, RenderInputProps[]> = {
   Transaksi: [
-    {
-      label: "Customer ID",
-      name: "customer_id",
-      type: "number",
-      element: "text" as const,
-      placeholder: "Masukan ID Customer",
-    },
     // {
     //   label: "Admin ID",
     //   name: "admin_id",
@@ -191,6 +184,13 @@ export const Inputs: Record<string, RenderInputProps[]> = {
     //   element: "text" as const,
     //   placeholder: "Masukan ID Admin",
     // },
+    {
+      label: "Jumlah Transaksi",
+      name: "amount",
+      type: "number",
+      element: "text" as const,
+      placeholder: "Masukan Jumlah Transaksi",
+    },
     {
       label: "Pilih Tipe Transaksi",
       name: "type",
@@ -201,13 +201,6 @@ export const Inputs: Record<string, RenderInputProps[]> = {
         { key: "deposit", label: "Deposit" },
         { key: "withdrawal", label: "Withdrawal" },
       ]
-    },
-    {
-      label: "Jumlah Transaksi",
-      name: "amount",
-      type: "number",
-      element: "text" as const,
-      placeholder: "Masukan Jumlah Transaksi",
     },
   ],
   Login: [

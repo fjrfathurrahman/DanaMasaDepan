@@ -55,4 +55,5 @@ export interface RenderInputProps {
   placeholder?: string;
   element?: "text" | "password" | "textArea" | "category" | "select";
   options?: { key: string; label: string }[];
+  dynamicOptionsFetcher?: () => { key: string, label: string }[]
 }

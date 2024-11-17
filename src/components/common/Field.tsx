@@ -6,7 +6,7 @@ import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { useFormContext } from "react-hook-form";
 import { RenderInputProps } from "@/lib/types/Types";
 
-const Field = ({ name, label, placeholder, type = "text", element, options }: RenderInputProps) => {
+const Field = ({ name, label, placeholder, type = "text", element, options, dynamicOptionsFetcher }: RenderInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const { register, formState: { errors }} = useFormContext();
 
@@ -40,9 +40,11 @@ const Field = ({ name, label, placeholder, type = "text", element, options }: Re
         );
 
       case "select":
+        const fetchedOptions = dynamicOptionsFetcher ? dynamicOptionsFetcher() : options || [] as { key: string; label: string }[];
+
         return (
-          <Select items={options} label={label} errorMessage={getErrorMessage()} isInvalid={Boolean(errors[name])} {...register(name)}>
-            {options?.map((option) => (
+          <Select items={fetchedOptions} {...baseProps} {...register(name)}>
+            {fetchedOptions?.map((option) => (
               <SelectItem key={option.key} value={option.key} {...register(name)}>{option.label}</SelectItem>
             )) ?? []}
           </Select>
