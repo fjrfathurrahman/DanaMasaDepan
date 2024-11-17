@@ -2,6 +2,7 @@ import HERO from "@/app/public/HERO.png";
 import STARTSAVING from "@/app/public/SAVING.png";
 import ROCKET from "@/app/public/ROCKET.png";
 import { Icons } from "./icons";
+import { RenderInputProps } from "@/lib/types/Types";
 
 export const Resource = {
   dImage: {
@@ -174,7 +175,7 @@ export const Resource = {
   },
 };
 
-export const Inputs = {
+export const Inputs: Record<string, RenderInputProps[]> = {
   Transaksi: [
     {
       label: "Customer ID",
@@ -191,11 +192,15 @@ export const Inputs = {
     //   placeholder: "Masukan ID Admin",
     // },
     {
-      label: "Tipe Transaksi",
+      label: "Pilih Tipe Transaksi",
       name: "type",
       type: "text",
-      element: "text" as const,
       placeholder: "Masukan Tipe Transaksi",
+      element: "select" as const,
+      options: [
+        { key: "deposit", label: "Deposit" },
+        { key: "withdrawal", label: "Withdrawal" },
+      ]
     },
     {
       label: "Jumlah Transaksi",
@@ -232,7 +237,7 @@ export const Inputs = {
     {
       label: "NISN",
       name: "nisn",
-      type: "text",
+      type: "number",
       placeholder: "Masukan NISN Anda",
       element: "text" as const,
     },
@@ -241,34 +246,6 @@ export const Inputs = {
       name: "name",
       type: "text",
       placeholder: "Masukan Nama Anda",
-      element: "text" as const,
-    },
-    {
-      label: "Jenis Kelamin",
-      name: "gender",
-      type: "text",
-      placeholder: "Masukan Jenis Kelamin Anda",
-      element: "text" as const,
-    },
-    {
-      label: "Jurusan",
-      name: "major",
-      type: "text",
-      placeholder: "Masukan Jurusan Anda",
-      element: "text" as const,
-    },
-    {
-      label: "Kelas",
-      name: "class",
-      type: "text",
-      placeholder: "Masukan Kelas Anda",
-      element: "text" as const,
-    },
-    {
-      label: "Alamat",
-      name: "address",
-      type: "text",
-      placeholder: "Masukan Alamat Anda",
       element: "text" as const,
     },
     {
@@ -284,6 +261,48 @@ export const Inputs = {
       type: "text",
       placeholder: "Masukan Nomor Telepon Anda",
       element: "text" as const,
+    },
+    {
+      label: "Pilih Jenis Kelamin Nasabah",
+      name: "gender",
+      type: "text",
+      placeholder: "Masukan Jenis Kelamin Anda",
+      element: "select" as const,
+      options: [
+        { key: "Laki-Laki", label: "Laki Laki"},
+        { key: "Perempuan", label: "Perempuan"}
+      ]
+    },
+    {
+      label: "Pilih Jurusan Nasabah",
+      name: "major",
+      type: "text",
+      placeholder: "Masukan Jurusan Anda",
+      element: "select" as const,
+      options: [
+        {key: "RPL", label: "Perangkat Lunak dan GIM"},
+        {key: "TKJ", label: "Teknik Komputer dan Jaringan"},
+        {key: "TIF", label: "Teknik Informatika"},
+        {key: "TKR", label: "Teknik Komputer dan Robot"},
+      ],
+    },
+    {
+      label: "Pilih Kelas Nasabah",
+      name: "class",
+      type: "text",
+      element: "select" as const,
+      options: [
+        { key: "X", label: "X" },
+        { key: "XI", label: "XI" },
+        { key: "XII", label: "XII" },
+      ],
+    },
+    {
+      label: "Alamat",
+      name: "address",
+      type: "text",
+      placeholder: "Masukan Alamat Anda",
+      element: "textArea" as const,
     },
   ],
   Contact: [

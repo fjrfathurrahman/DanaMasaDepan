@@ -47,3 +47,12 @@ export interface RowAdminProps {
 export interface RowProps extends RowTransactionProps, RowCostumersProps, RowAdminProps {
   [key: string]: unknown;
 }
+
+export interface RenderInputProps {
+  name: string;
+  label?: string;
+  type?: string;
+  placeholder?: string;
+  element?: "text" | "password" | "textArea" | "category" | "select";
+  options?: { key: string; label: string }[];
+}

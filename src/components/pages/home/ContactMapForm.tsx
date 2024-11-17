@@ -54,7 +54,7 @@ export const ContactMapForm = () => {
             ))}
           </div>
 
-          <Form.Footer isLoading={methods.formState.isSubmitting}size="lg" />
+          <Form.Footer isLoading={methods.formState.isSubmitting} size="lg" />
         </Form>
       </FormProvider>
     </Layout.Container>

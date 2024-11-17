@@ -10,9 +10,7 @@ const ToggleTheme = () => {
   
   return (
     <Button isIconOnly onClick={toggleTheme} variant="light">
-      <Icon icon={
-        theme !== 'light' ? Icons.MdOutlineWbSunny : Icons.LuMoonStar
-      }/>
+      <Icon icon={theme !== 'light' ? Icons.MdOutlineWbSunny : Icons.LuMoonStar}/>
     </Button>
   )
 }

@@ -1,11 +1,12 @@
 "use client";
 
-import { Input, Textarea } from "@nextui-org/react";
+import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { useState } from "react";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { useFormContext } from "react-hook-form";
+import { RenderInputProps } from "@/lib/types/Types";
 
-const Field = ({ name, label, placeholder, type = "text", element }: RenderInputProps) => {
+const Field = ({ name, label, placeholder, type = "text", element, options }: RenderInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const { register, formState: { errors }} = useFormContext();
 
@@ -28,9 +29,7 @@ const Field = ({ name, label, placeholder, type = "text", element }: RenderInput
 
       case "password":
         return (
-          <Input
-            {...baseProps}
-            {...register(name)}
+          <Input {...baseProps} {...register(name)}
             type={showPassword ? "text" : "password"}
             endContent={
               <button type="button" onClick={() => setShowPassword(!showPassword)}>
@@ -39,6 +38,18 @@ const Field = ({ name, label, placeholder, type = "text", element }: RenderInput
             }
           />
         );
+
+      case "select":
+        return (
+          <Select items={options} label={label} errorMessage={getErrorMessage()} isInvalid={Boolean(errors[name])} {...register(name)}>
+            {options?.map((option) => (
+              <SelectItem key={option.key} value={option.key} {...register(name)}>{option.label}</SelectItem>
+            )) ?? []}
+          </Select>
+        )
+
+      case "textArea":
+        return <Textarea {...baseProps} {...register(name)} minRows={4} />;
 
       default:
         return <Input {...baseProps} type={type} {...register(name)} />;
@@ -49,11 +60,3 @@ const Field = ({ name, label, placeholder, type = "text", element }: RenderInput
 };
 
 export default Field;
-
-interface RenderInputProps {
-  name: string;
-  label?: string;
-  type?: string;
-  placeholder?: string;
-  element?: "text" | "password" | "textArea";
-}

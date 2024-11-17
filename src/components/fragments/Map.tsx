@@ -8,7 +8,7 @@ import "@maptiler/sdk/dist/maptiler-sdk.css";
 const Map = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maptilersdk.Map | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const zoomLevel = 14;
 
   maptilersdk.config.apiKey = process.env.NEXT_PUBLIC_MAPTILER_API_KEY ?? "";

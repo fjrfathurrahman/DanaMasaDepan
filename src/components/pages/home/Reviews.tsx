@@ -18,73 +18,64 @@ export const Reviews = () => {
 const dReviews = [
   {
     avatar: "https://i.pinimg.com/enabled/564x/23/22/b7/2322b7799c1a5161203f0800ac97e716.jpg",
-    name: "Jessen Smitth",
+    name: "Jessen",
     job: "Software Engineer",
     content: "Website tabungan ini sangat membantu saya mengatur keuangan dengan mudah. Fitur-fiturnya lengkap dan user-friendly.",
-    time: "2024-10-10 14:23:00"
+    time: "Senin, 25 September 2006"
   },
   {
-    avatar: "",
     name: "Pak Kissan",
     job: "Graphic Designer",
     content: "Saya suka antarmuka pengguna yang intuitif dan modern. Membuat proses menabung jadi lebih menyenangkan.",
-    time: "2024-10-09 09:45:00"
+    time: "Selasa, 17 Agustus 2006"
   },
   {
-    // avatar: "",
-    name: "Rizky Aditya",
+    name: "Alexxander",
     job: "Data Analyst",
     content: "Sangat mudah digunakan dan saya dapat melihat perkembangan tabungan saya dengan jelas. Sangat direkomendasikan!",
-    time: "2024-10-08 16:50:00"
+    time: "Selasa, 01 Januari 2001"
   },
   {
-    // avatar: "../assets/images/avatar-3.png",
-    name: "Siti Nurhaliza",
+    name: "John Doe",
     job: "Accountant",
     content: "Keamanan yang ditawarkan oleh platform ini sangat baik. Saya merasa lebih tenang menabung di sini.",
-    time: "2024-10-07 12:15:00"
+    time: "Kamis, 22 Desember 2022"
   },
   {
-    // avatar: "../assets/images/avatar-3.png",
-    name: "Fajar Setiawan",
+    name: "Rachelie",
     job: "Marketing Specialist",
     content: "Website ini sangat membantu saya untuk merencanakan keuangan jangka panjang. Fitur analisisnya juga sangat berguna.",
-    time: "2024-10-06 11:05:00"
+    time: "Jumat, 15 November 2022"
   },
   {
-    // avatar: "../assets/images/avatar-3.png",
-    name: "Andini Prameswari",
+    name: "Ambatukam",
     job: "UI/UX Designer",
     content: "Desain website ini sangat memudahkan navigasi. Pengalaman pengguna yang dihadirkan sangat memuaskan.",
-    time: "2024-10-05 10:35:00"
+    time: "Rabu, 10 November 2022"
   },
   {
-    // avatar: "../assets/images/avatar-3.png",
-    name: "Dimas Haryanto",
+    name: "Rusdi Pratama",
     job: "Financial Advisor",
     content: "Sebagai penasihat keuangan, saya sangat merekomendasikan platform ini untuk siapa saja yang ingin mulai menabung.",
-    time: "2024-10-04 08:20:00"
+    time: "Senin, 05 November 2022"
   },
   {
-    // avatar: "../assets/images/avatar-3.png",
     name: "Nadia Syafira",
     job: "Product Manager",
     content: "Platform ini menawarkan fitur yang luar biasa dengan fokus pada kebutuhan pengguna. Sangat mengesankan!",
-    time: "2024-10-03 15:47:00"
+    time: "Minggu, 29 Oktober 2022"
   },
   {
-    // avatar: "../assets/images/avatar-3.png",
-    name: "Budi Santoso",
+    name: "Shiro",
     job: "Entrepreneur",
     content: "Sangat membantu dalam mengelola cash flow bisnis saya. Saya dapat mengatur anggaran dengan lebih baik.",
-    time: "2024-10-02 13:05:00"
+    time: "Kamis, 21 September 2022"  
   },
   {
-    // avatar: "../assets/images/avatar-3.png",
-    name: "Lina Maulida",
+    name: "Shanny",
     job: "Teacher",
     content: "Mudah digunakan bahkan untuk orang awam dalam keuangan. Saya bisa mengatur tabungan dengan sangat baik.",
-    time: "2024-10-01 17:30:00"
+    time: "Senin, 23 Agustus 2022"
   }
 ];
 

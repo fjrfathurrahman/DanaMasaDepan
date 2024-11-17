@@ -12,7 +12,7 @@ export const Hero = (): JSX.Element => {
   return (
     <Layout.Container spacing={['py-28']}>
 
-      <Layout.BoxGrid className="">
+      <Layout.BoxGrid>
         <AnimationList className="order-2 lg:order-1">
           <span className="text-base sm:text-xl tracking-wider">Tabungan Masa Depan</span>
           <h1 className="font-bold tracking-tight">
@@ -34,7 +34,7 @@ export const Hero = (): JSX.Element => {
           </Layout.BoxFlex>
         </AnimationList>
 
-          <AnimationVertical className="order-1 lg:order-2 mx-auto">
+          <AnimationVertical className="order-1 lg:order-2 mx-auto relative z-50">
             <Image src={Resource.dImage.HERO} alt="image" quality={100} height={450} className="select-none" />
           </AnimationVertical>
 

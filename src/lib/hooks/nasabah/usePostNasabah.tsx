@@ -2,7 +2,7 @@ import { axiosInstance } from "@/lib/service/axios";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-export default function usePostNasabah() {
+export default function usePostNasabah(reset: () => void) {
 
   return useMutation({
     mutationFn: async (formData: FormData) => {
@@ -12,6 +12,7 @@ export default function usePostNasabah() {
     },
     onSuccess: () => {
       toast.success("Data berhasil ditambahkan");
+      reset();
     },
     onError: () => {
       toast.error("Terjadi kesalahan, silahkan coba lagi");

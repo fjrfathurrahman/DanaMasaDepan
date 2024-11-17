@@ -14,7 +14,7 @@ const Section: React.FC<LayoutProps> = ({ children, className, sizing, spacing, 
 
 
 const Container: React.FC<LayoutProps> = ({ children, className, sizing = ['min-h-[600px] sm:min-h-[700px]'], spacing, flexbox, ...props}) => {
-  const classes = cn('w-full container mx-auto py-12', sizing, spacing, flexbox, className);
+  const classes = cn('w-full container mx-auto py-12 relative z-40', sizing, spacing, flexbox, className);
 
   return (
     <div className={classes} {...props}>
@@ -46,7 +46,7 @@ const BoxFlex: React.FC<LayoutProps> = ({ children, className, sizing, spacing, 
 }
 
 const BoxGrid: React.FC<LayoutProps> = ({ children, className, sizing, spacing, grid = ['grid', 'lg:grid-cols-2', 'gap-8'], ...props}) => {
-  const classes = cn(sizing, spacing, grid, className);
+  const classes = cn('relative z-50',sizing, spacing, grid, className);
 
   return (
     <div className={classes} {...props}>

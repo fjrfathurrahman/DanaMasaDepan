@@ -5,7 +5,7 @@ import { Tooltip } from '@nextui-org/react';
 
 export const Collaboration = () => {
   return (
-    <Layout.Section bgSecondary>
+    <Layout.Section bgSecondary className='py-4'>
       <Layout.Container sizing={['h-max']} spacing={['my-12']} className='dark:text-white text-black  text-center brightness-70'>
 
         <span>Kolaborasi dengan kami</span>

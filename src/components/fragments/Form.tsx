@@ -6,9 +6,9 @@ interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
   isPending?: boolean;
 }
 
-export const Form = ({ onSubmit, children }: FormProps) => {
+export const Form = ({ onSubmit, children, className }: FormProps) => {
   return (
-    <form onSubmit={onSubmit} className="mx-auto max-w-[1024px] space-y-6">
+    <form onSubmit={onSubmit} className={`mx-auto max-w-[1024px] space-y-6 ${className}`}>
       {children}
     </form>
   );

@@ -9,12 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
 export default function TambahNasabah() {
-  const { mutate, isPending } = usePostNasabah();
-
-  const methods = useForm<ShemaCostumer>({
-    resolver: zodResolver(CostumerShema),
-    mode: "onChange",
-  });
+  const methods = useForm<ShemaCostumer>({ resolver: zodResolver(CostumerShema), mode: "onChange" });
+  const { mutate, isPending } = usePostNasabah(methods.reset);
 
   const onSubmit = (data: ShemaCostumer) => {
     const formData = new FormData();
@@ -42,10 +38,8 @@ export default function TambahNasabah() {
           </p>
         </Form.Header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8 border-t">
-          {Inputs.Nasabah.map((item) => (
-            <Field key={item.name} {...item} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+          {Inputs.Nasabah.map((item) => <Field key={item.name} {...item} />)}
         </div>
 
         <Form.Footer isLoading={isPending || methods.formState.isSubmitting} />
