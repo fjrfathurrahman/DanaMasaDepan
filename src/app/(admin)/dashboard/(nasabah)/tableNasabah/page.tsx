@@ -5,13 +5,13 @@ import Link from "next/link";
 import TableData from "@/components/fragments/TableData";
 import useDeleteNasabah from "@/lib/hooks/nasabah/useDeleteNasabah";
 import Icon from "@/components/common/Icon";
+import filterDataByQuery from "@/lib/utils/FilterDataQuery";
 import { Layout } from "@/components/modules/import";
 import { Button, Input } from "@nextui-org/react";
 import { toast } from "sonner";
 import { Icons } from "@/lib/resource/icons";
 import { useState } from "react";
-import filterDataByQuery from "@/lib/utils/FilterDataQuery";
-import { RowCostumersProps, RowProps } from "@/lib/types/Types";
+import { RowProps } from "@/lib/types/Types";
 
 const columns = [
   { key: "id", label: "ID" },
@@ -29,14 +29,13 @@ export default function TableNasabah() {
   const [query, setQuery] = useState<string>('');
   const { data: allData, status } = useGetNasabah();
   
-  const filterKeys = ['id', 'name', 'nisn', 'major', 'class', 'gender', 'email', 'phone', 'balance'] as (keyof RowCostumersProps)[];
+  const filterKeys = ['id', 'name', 'nisn', 'major', 'class', 'gender', 'email', 'phone', 'balance'];
   const filteredData = filterDataByQuery(allData || [], query, filterKeys) as RowProps[];
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value);
 
-
   return (
     <Layout.Box>
-      <div className="py-8 border-b space-y-2">
+      <div className="pb-8 border-b space-y-2">
         <h2>Nasabah</h2>
         <p>
           Halaman ini menampilkan daftar lengkap nasabah yang
@@ -67,7 +66,7 @@ export default function TableNasabah() {
         status={status}
         columns={columns}
         page="Nasabah"
-        deleteItem={(id) => mutate(id.toString())}
+        openDeleteModal={(id) => mutate(id.toString())}
       />
     </Layout.Box>
   );

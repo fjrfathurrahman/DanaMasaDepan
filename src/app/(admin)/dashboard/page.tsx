@@ -1,12 +1,13 @@
 "use client";
 
 import TableData from "@/components/fragments/TableData";
-import Activity from "@/components/pages/dashboard/Activity";
 import Amount from "@/components/pages/dashboard/Amount";
 import Banner from "@/components/pages/dashboard/Banner";
-import Statistics from "@/components/pages/dashboard/Statistics";
 import useGetTransaction from "@/lib/hooks/transaksi/useGetTransaction";
+import { FeatureUnavailable } from "@/components/layouts/FeatureUnavailable";
 import { MdOutlineBackupTable } from "react-icons/md";
+import { PiListStarBold } from "react-icons/pi";
+import { BsBarChart } from "react-icons/bs";
 
 const columns = [
   { key: "id", label: "ID" },
@@ -14,18 +15,18 @@ const columns = [
   { key: "admin_id", label: "Admin" },
   { key: "amount", label: "Amount" },
   { key: "type", label: "Type" },
-  { key: "action", label: "Action" },
+  { key: "view", label: "View" },
 ];
 
-export default function Daashboard() {
+export default function Dashboard() {
 
   return (
     <>
       <Banner />
       <Amount />
       <TableTransaction />
-      <Activity/>
-      <Statistics/>
+      <FeatureUnavailable Icon={PiListStarBold} HeaderText="Aktifitas Terbaru"/>
+      <FeatureUnavailable Icon={BsBarChart} HeaderText="Data Statistik" TailwindSpacing="py-20"/>
     </>
   );
 }
@@ -40,12 +41,7 @@ const TableTransaction = () => {
         <h6>Table Data</h6>
       </div>
 
-      <TableData
-        data={data}
-        status={status}
-        columns={columns}
-        page="Transaksi"
-      />
+      <TableData data={data} status={status} columns={columns} page="Transaksi"/>
     </div>
   );
 };

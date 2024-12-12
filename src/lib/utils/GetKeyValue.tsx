@@ -5,8 +5,8 @@ import Link from "next/link";
 import { MdDelete, MdModeEdit, MdRemoveRedEye } from "react-icons/md";
 import formatCurrency from "./Total";
 
-export default function GetKeyValue( item: RowProps, columnKey: string, index: number, page: Page, deleteItem?: () => void) {
-  switch (columnKey) {
+export default function GetKeyValue( item: RowProps, columnKey: string, index: number, page: Page, openDeleteModal: (id: number) => void) {
+  switch (columnKey as string) {
     case "id":
       return index + 1;
 
@@ -23,10 +23,10 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
         <Chip color="danger" variant="flat">Withdrawal</Chip>
       ) : null;
     case "amount":
-      return formatCurrency(item.amount as number);
+      return <Chip color="primary" variant="flat">{formatCurrency(item.amount as number)}</Chip>
 
     case "balance":
-      return formatCurrency(item.balance as number);
+      return <Chip color="primary" variant="flat">{formatCurrency(item.balance as number)}</Chip>
 
     case "action":
       return (
@@ -41,12 +41,7 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
               <MdModeEdit size={18} />
             </Link>
           </Button>
-          <Button
-            isIconOnly
-            startContent={<MdDelete size={18} />}
-            color="danger"
-            onClick={deleteItem}
-          />
+          <Button isIconOnly startContent={<MdDelete size={18} />} color="danger" onClick={() => openDeleteModal(item.id)} />
         </ButtonGroup>
       );
 

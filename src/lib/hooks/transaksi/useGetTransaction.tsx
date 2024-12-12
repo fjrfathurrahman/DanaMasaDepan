@@ -6,8 +6,9 @@ export default function useGetTransaction() {
     queryKey: ["transactions"],
     queryFn: async () => {
       const response = await axiosInstance.get("/transactions");
-
       await new Promise((resolve) => setTimeout(resolve, 3000));
+      console.log(response)
+
       return response;
     },
   })

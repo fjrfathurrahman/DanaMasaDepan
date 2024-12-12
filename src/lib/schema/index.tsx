@@ -38,8 +38,7 @@ type ShemaAddAdmin = z.infer<typeof AddAdminSchema>
 
 const TransactionShema = z.object({
   customer_id: z.string(),
-  // admin_id: z.string(),
-  type: z.enum(['deposit', 'withdrawal']),
+  type: z.string(),
   amount: z.string(),
 })
 

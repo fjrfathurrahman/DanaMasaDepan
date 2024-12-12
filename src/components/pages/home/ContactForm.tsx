@@ -1,8 +1,6 @@
 "use client";
 
 import Field from "@/components/common/Field";
-import Title from "@/components/common/Title";
-import Map from "@/components/fragments/Map";
 import axios from "axios";
 import { Form } from "@/components/fragments/Form";
 import { Layout } from "@/components/modules/import";
@@ -11,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactUsShema, ShemaContactUs } from "@/lib/schema";
 import { Inputs } from "@/lib/resource";
 
-export const ContactMapForm = () => {
+export const ContactForm = () => {
   const methods = useForm<ShemaContactUs>({
     resolver: zodResolver(ContactUsShema),
     mode: "onChange",
@@ -35,17 +33,11 @@ export const ContactMapForm = () => {
 
   return (
     <Layout.Container>
-      <Title text="Temukan Kami & Kirim Pesan" />
-      <Map /> {/* Memiliki BUG */}
-
       <FormProvider {...methods}>
         <Form onSubmit={methods.handleSubmit(onSubmit)}>
           <Form.Header>
             <h4>Ada yang ingin anda tanyakan?</h4>
-            <p>
-              Silahkan isi form di bawah ini, untuk jika anda memiliki
-              pertanyaan
-            </p>
+            <p>Silahkan isi form di bawah ini, untuk jika anda memiliki pertanyaan</p>
           </Form.Header>
 
           <div className="flex flex-col gap-4">

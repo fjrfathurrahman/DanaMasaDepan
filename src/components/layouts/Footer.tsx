@@ -47,9 +47,9 @@ const Body = () => (
   </Layout.BoxGrid>
 );
 
-const Copyright = () => (
+export const Copyright = () => (
   <Layout.BoxFlex flexbox={["flex", "justify-between", "md:items-center", "flex-col-reverse", "md:flex-row", "gap-4"]} className="border-t border-gray-700 pt-12 mt-12">
-    <span>© Copyright {new Date().getFullYear()} Dana Masa Depan - All rights reserved.</span>
+    <span>Copyright {new Date().getFullYear()} Dana Masa Depan - All rights reserved.</span>
     <Layout.BoxFlex flexbox={["flex", "flex-row", "gap-4"]}>
       <RenderItems data={Resource.dSosmed} element={'Icon'} />
     </Layout.BoxFlex>
@@ -62,7 +62,7 @@ const RenderItems = ({data, element}: { data: {id?: number, title?: string, href
     <>
       {data.map((item) => (
         <Link key={item.id} href={item.href} passHref>
-          {element === 'Icon' ? <Icon size="lg" icon={item.icon as IconType} /> : element === 'Text' ? (
+          {element === 'Icon' ? <Icon size="md" icon={item.icon as IconType} /> : element === 'Text' ? (
             <p className="text-paragraphDark">{item.title}</p>
           ): null }
         </Link>

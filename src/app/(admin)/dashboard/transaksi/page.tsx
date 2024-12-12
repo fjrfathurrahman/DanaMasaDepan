@@ -8,6 +8,7 @@ import { ShemaTransaction, TransactionShema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import useGetNasabah from "@/lib/hooks/nasabah/useGetNasabah";
+import { RowCostumersProps } from "@/lib/types/Types";
 
 export default function Transaksi() {
   const methods = useForm<ShemaTransaction>({resolver: zodResolver(TransactionShema),mode: "onChange",});
@@ -25,9 +26,9 @@ export default function Transaksi() {
   };
 
   const getNasbahOptions = () => {
-    return dataNasabah?.map((item: { id: string, name: string}) => ({
+    return dataNasabah?.map((item: RowCostumersProps) => ({
       key: item.id,
-      label: `${item.name}`,
+      label: `${item.name} - ${item.class} ${item.major}`,
     })) || [];
   }
 

@@ -6,9 +6,10 @@ export default function useDeleteAdmin() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (id: string) => {
+    mutationFn: async (id: string | number) => {
       const response = axiosInstance.delete("/admin/" + id);
       await new Promise((resolve) => setTimeout(resolve, 1500));
+      console.log(response);
 
       return response;
     },

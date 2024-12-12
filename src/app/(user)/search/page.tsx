@@ -23,7 +23,7 @@ export default function Search() {
     <Layout.Container spacing={'py-28'}>
       <div>
         <h2>Cari Akun Anda di sini!</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum magnam, commodi fuga quod distinctio provident quae laudantium voluptatem. Assumenda culpa ipsum sunt, excepturi aut voluptatum ex! Beatae voluptates inventore architecto.</p>
+        <p>Fitur pencarian nasabah yang memudahkan Anda untuk menemukan data berdasarkan NISN, Nama, Jurusan, dan Kelas. Serta Anda dapat melihat informasi data detail nasabah.</p>
       </div>
 
       <div className="py-8 gap-4 flex items-center">

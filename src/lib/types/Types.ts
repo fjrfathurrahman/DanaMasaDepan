@@ -1,22 +1,13 @@
 export type Page = 'Nasabah' | 'Admin' | 'Transaksi'
 
-
 export interface RowTransactionProps {
   id: number;
   customer_id?: number;
   admin_id?: number;
   type?: string;
   amount?: number;
-  customer?: {
-    id: number;
-    name: string;
-    email: string;
-  };
-  admin?: {
-    id: number;
-    name: string;
-    email: string;
-  };
+  customer?: RowCostumersProps;
+  admin?: RowAdminProps;
   created_at?: string;
   updated_at?: string;
 }
@@ -32,6 +23,7 @@ export interface RowCostumersProps {
   address?: string;
   email?: string;
   phone?: string;
+  balance?: number;
   created_at?: string;
   updated_at?: string;
 }

@@ -6,8 +6,9 @@ export default function useGetAdmin() {
   const { data: response, status } = useQuery({
     queryKey: ["admins"],
     queryFn: async () => {
-      const response = await axiosInstance.get("/admins");
+      const response = await axiosInstance.get("/admin");
       await new Promise((resolve) => setTimeout(resolve, 3000));
+      console.log(response);
 
       return response;
     },

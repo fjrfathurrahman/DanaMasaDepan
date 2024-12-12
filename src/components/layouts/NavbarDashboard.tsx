@@ -1,19 +1,12 @@
 'use client';
 
 import formatDate from "@/lib/utils/FormatDate";
-import { Layout } from "../modules/import";
 import ToggleTheme from "../fragments/ToggleTheme";
-import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownSection,
-  DropdownTrigger,
-} from "@nextui-org/react";
 import Icon from "../common/Icon";
-import { Icons } from "@/lib/resource/icons";
 import Link from "next/link";
+import { Layout } from "../modules/import";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger} from "@nextui-org/react";
+import { Icons } from "@/lib/resource/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -21,16 +14,16 @@ export const NavbarDashboard = () => {
   const path = usePathname();
   const router = useRouter();
 
-  const logout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("adminId");
     router.push("/");
   };
 
   return (
-    <Layout.Box className="border-b pb-6 flex justify-between items-center">
+    <Layout.Box className="border-b pb-6 mb-8 flex justify-between items-center">
       <div>
-        <h4>Dashboard</h4>
+        <h4 className="font-bold">Dashboard</h4>
         <small>{formatDate()}</small>
       </div>
 
@@ -54,16 +47,12 @@ export const NavbarDashboard = () => {
 
             <DropdownSection title="Services" showDivider>
               {Menu.services.map((item) => (
-                <DropdownItem
-                  key={item.title}
-                  color={item.name === "Logout" ? "danger" : "default"}
-                  variant={item.name === "Logout" ? "bordered" : "light"}
-                  className={item.name === "Logout" ? "text-danger" : undefined}
+                <DropdownItem key={item.title} color={item.name === "Logout" ? "danger" : "default"} variant={item.name === "Logout" ? "bordered" : "light"} className={item.name === "Logout" ? "text-danger" : undefined}
                   startContent={
                     item.icon ? <Icon icon={item.icon} size="sm" /> : null
                   }
                 >
-                  <button type="button" onClick={item.name === "Logout" ? () => logout() : () => toast.info('Fitur belum tersedia')}>
+                  <button type="button" onClick={item.name === "Logout" ? () => handleLogout() : () => toast.info('Fitur belum tersedia')}>
                     {item.title}
                   </button>
                 </DropdownItem>

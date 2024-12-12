@@ -40,6 +40,9 @@ const config: Config = {
         lightSecondary: '#FAF8F6',
         dark: '#16161a',
         darkSecondary: '#242629',
+      },
+      borderColor: {
+        dark: '#16161a',
       }
     },
   },

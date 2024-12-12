@@ -8,6 +8,8 @@ export default function usePostTransaction(reset: () => void) {
     mutationFn: async (formData: FormData) => {
       const response = await axiosInstance.post("/transactions", formData);
       await new Promise((resolve) => setTimeout(resolve, 1500));
+      console.log(response);
+
       return response;
     },
     onSuccess: () => {

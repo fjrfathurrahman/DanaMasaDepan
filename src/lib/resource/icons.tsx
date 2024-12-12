@@ -39,9 +39,13 @@ import { IoSearch } from "react-icons/io5";
 import { LuMessagesSquare } from "react-icons/lu";
 import { BsInfoLg } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
-
+import { IoMdTrendingUp, IoMdTrendingDown } from "react-icons/io";
+import { TbListDetails } from "react-icons/tb";
 
 export const Icons = {
+  TbListDetails, 
+  IoMdTrendingUp,
+  IoMdTrendingDown,
   MdOutlineRefresh,
   FaPlus,
   RiLogoutCircleRLine,

@@ -41,7 +41,7 @@ export default function Authentication() {
             </p>
           </Form.Header>
 
-          <div className="flex flex-col gap-4 py-8 border-t">
+          <div className="flex flex-col gap-4">
             {Inputs.Login.map((item) => (
               <Field key={item.name} {...item} />
             ))}
