@@ -1,14 +1,15 @@
-/**
- * Men filter data berdasarkan kata kunci (query).
- */
-export default function filterDataByQuery<T>( data: T[], query: string, keys: (keyof T)[]): T[] {
+
+// * Function untuk menfilter data berdasarkan kata kunci (query).
+export default function filterDataByQuery<T>(data: T[], query: string, keys: (keyof T)[]){
   if (!query) return data;
 
   return data.filter(item => keys.some(key => {
       const value = item[key];
+      
       if (typeof value === 'string' || typeof value === 'number') {
         return value.toString().toLowerCase().includes(query.toLowerCase());
       }
+
       return false;
     })
   );

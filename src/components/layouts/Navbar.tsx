@@ -5,7 +5,6 @@ import { Icons } from "@/lib/resource/icons";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, DropdownSection} from "@nextui-org/react";
 import { usePathname } from "next/navigation";
 import { Resource } from "@/lib/resource";
-import { IconType } from "react-icons";
 import ToggleTheme from "../fragments/ToggleTheme";
 import Icon from "../common/Icon";
 import Link from "next/link";
@@ -13,13 +12,13 @@ import Link from "next/link";
 export const Navbar = () => {
   return (
     <Layout.Section>
-      <Layout.Container sizing={["h-max"]} spacing={["py-4"]} className="fixed top-0 left-0 right-0 z-50 backdrop-blur mx-auto border-b">
+      <Layout.Container sizing={["h-max"]} spacing={["py-6"]} className="fixed top-0 left-0 right-0 z-50 backdrop-blur mx-auto border-b">
         <div className="flex items-center justify-between">
           <span>Logo</span>
 
           <div className="flex items-center gap-3">
             <ToggleTheme />
-            <DropdownMenus menu={Resource.dMenu.links} />
+            <DropdownMenus />
           </div>
         </div>
       </Layout.Container>
@@ -27,7 +26,7 @@ export const Navbar = () => {
   );
 };
 
-export const DropdownMenus = ({menu}: { menu: { title: string; href: string; icon?: IconType | null }[]}) => {
+export const DropdownMenus = () => {
   const path = usePathname();
 
   return (
@@ -39,8 +38,8 @@ export const DropdownMenus = ({menu}: { menu: { title: string; href: string; ico
       </DropdownTrigger>
 
       <DropdownMenu aria-label="Menu Links">
-        <DropdownSection title="Links" showDivider>
-          {menu.map((item) => (
+        <DropdownSection title='Links' showDivider>
+          {Resource.dMenu.links.map((item) => (
             <DropdownItem
               key={item.title}
               color={path === item.href ? "primary" : "default"}

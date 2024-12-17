@@ -4,7 +4,7 @@ export interface RowTransactionProps {
   id: number;
   customer_id?: number;
   admin_id?: number;
-  type?: string;
+  type?: 'deposit' | 'withdrawal';
   amount?: number;
   customer?: RowCostumersProps;
   admin?: RowAdminProps;
@@ -24,6 +24,7 @@ export interface RowCostumersProps {
   email?: string;
   phone?: string;
   balance?: number;
+  image?: string;
   created_at?: string;
   updated_at?: string;
 }
@@ -32,6 +33,8 @@ export interface RowAdminProps {
   id: number;
   name?: string;
   email?: string;
+  role?: 'admin' | 'teacher' | 'student' | 'superadmin';
+  image?: string;
   created_at?: string;
   updated_at?: string;
 }
@@ -43,9 +46,9 @@ export interface RowProps extends RowTransactionProps, RowCostumersProps, RowAdm
 export interface RenderInputProps {
   name: string;
   label?: string;
-  type?: string;
+  type?: "text" | "number" | "email" | "password" | "date" | "file";
   placeholder?: string;
-  element?: "text" | "password" | "textArea" | "category" | "select";
+  element?: "text" | "password" | "textArea" | "category" | "select" | "date";
   options?: { key: string; label: string }[];
   dynamicOptionsFetcher?: () => { key: string, label: string }[]
 }

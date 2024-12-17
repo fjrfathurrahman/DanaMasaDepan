@@ -15,7 +15,7 @@ export const Form = ({ onSubmit, children, className }: FormProps) => {
 };
 
 const Header = ({ children }: { children: React.ReactNode }) => {
-  return <div className="py-8 border-b space-y-2">{children}</div>;
+  return <div className="pb-8 border-b space-y-2">{children}</div>;
 };
 
 const Footer = ({ children, isLoading, ...props }: { children?: React.ReactNode, isLoading: boolean } & ButtonProps) => {

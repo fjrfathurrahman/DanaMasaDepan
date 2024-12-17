@@ -7,7 +7,7 @@ export default function useDeleteAdmin() {
 
   return useMutation({
     mutationFn: async (id: string | number) => {
-      const response = axiosInstance.delete("/admin/" + id);
+      const response = axiosInstance.delete("/admins/" + id);
       await new Promise((resolve) => setTimeout(resolve, 1500));
       console.log(response);
 

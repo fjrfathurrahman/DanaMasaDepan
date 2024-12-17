@@ -25,7 +25,7 @@ const Container: React.FC<LayoutProps> = ({ children, className, sizing = ['min-
 
 
 const Box: React.FC<LayoutProps> = ({ children, className, sizing, spacing, flexbox, ...props}) => {
-  const classes = cn(sizing, spacing, flexbox, className);
+  const classes = cn('border-zinc-400 dark:border-zinc-700', sizing, spacing, flexbox, className);
 
   return (
     <div className={classes} {...props}>
@@ -36,7 +36,7 @@ const Box: React.FC<LayoutProps> = ({ children, className, sizing, spacing, flex
 
 
 const BoxFlex: React.FC<LayoutProps> = ({ children, className, sizing, spacing, flexbox = ['flex', 'flex-col', 'gap-4'], ...props}) => {
-  const classes = cn(sizing, spacing, flexbox, className);
+  const classes = cn('border-zinc-400 dark:border-zinc-700', sizing, spacing, flexbox, className);
 
   return (
     <div className={classes} {...props}>
@@ -46,7 +46,7 @@ const BoxFlex: React.FC<LayoutProps> = ({ children, className, sizing, spacing, 
 }
 
 const BoxGrid: React.FC<LayoutProps> = ({ children, className, sizing, spacing, grid = ['grid', 'lg:grid-cols-2', 'gap-8'], ...props}) => {
-  const classes = cn('relative z-50',sizing, spacing, grid, className);
+  const classes = cn('relative z-50 border-zinc-400 dark:border-zinc-700',sizing, spacing, grid, className);
 
   return (
     <div className={classes} {...props}>

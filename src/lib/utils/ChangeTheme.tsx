@@ -6,8 +6,8 @@ interface ThemeState {
   toggleTheme: () => void;
 }
 
-export const useInitializeTheme = () => {
-  const { theme, toggleTheme } = useTheme();
+export const InitializeTheme = () => {
+  const { theme, toggleTheme } = Theme();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
@@ -21,7 +21,7 @@ export const useInitializeTheme = () => {
 };
 
 
-export const useTheme = create<ThemeState>((set) => ({
+export const Theme = create<ThemeState>((set) => ({
   theme: 'dark',
   toggleTheme: () =>
     set((state) => {

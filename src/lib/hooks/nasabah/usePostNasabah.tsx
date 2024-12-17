@@ -8,6 +8,7 @@ export default function usePostNasabah(reset: () => void) {
     mutationFn: async (formData: FormData) => {
       const response = axiosInstance.post("/customers", formData);
       await new Promise((resolve) => setTimeout(resolve, 1500));
+
       return response;
     },
     onSuccess: () => {

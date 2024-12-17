@@ -9,8 +9,8 @@ export default function useGetNasabah(id?: string) {
     queryFn: async () => {
       const response = await axiosInstance.get(endpoint);
       await new Promise((resolve) => setTimeout(resolve, 3000));
-
       console.log(response)
+      
       return response;
     }
 

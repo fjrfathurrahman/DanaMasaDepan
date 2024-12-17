@@ -103,6 +103,7 @@
   }
 }
 
+
 ::-webkit-scrollbar {
   @apply hidden;
 }

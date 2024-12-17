@@ -44,5 +44,5 @@ const columns = [
   { key: "major", label: "Jurusan" },
   { key: "class", label: "Kelas" },
   { key: "balance", label: "Saldo" },
-  { key: "view", label: "Lihat" },
+  { key: "view", label: "Aksi" },
 ];

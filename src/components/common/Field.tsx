@@ -40,19 +40,19 @@ const Field = ({ name, label, placeholder, type = "text", element, options, dyna
         );
 
       case "select":
-        const fetchedOptions = dynamicOptionsFetcher ? dynamicOptionsFetcher() : options || [] as { key: string; label: string }[];
+        const fetchedOptions = dynamicOptionsFetcher ? dynamicOptionsFetcher() : options || [];
 
         return (
           <Select items={fetchedOptions} {...baseProps} {...register(name)}>
             {fetchedOptions?.map((option) => (
               <SelectItem key={option.key} value={option.key} {...register(name)}>{option.label}</SelectItem>
-            )) ?? []}
+            ))}
           </Select>
         )
 
       case "textArea":
         return <Textarea {...baseProps} {...register(name)} minRows={4} />;
-
+      
       default:
         return <Input {...baseProps} type={type} {...register(name)} />;
     }

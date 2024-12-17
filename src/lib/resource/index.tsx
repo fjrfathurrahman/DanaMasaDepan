@@ -251,7 +251,7 @@ export const Inputs: Record<string, RenderInputProps[]> = {
     {
       label: "Nomor Telepon",
       name: "phone",
-      type: "text",
+      type: "number",
       placeholder: "Masukan Nomor Telepon Anda",
       element: "text" as const,
     },
@@ -262,7 +262,7 @@ export const Inputs: Record<string, RenderInputProps[]> = {
       placeholder: "Masukan Jenis Kelamin Anda",
       element: "select" as const,
       options: [
-        { key: "Laki-Laki", label: "Laki Laki"},
+        { key: "Laki-laki", label: "Laki Laki"},
         { key: "Perempuan", label: "Perempuan"}
       ]
     },
@@ -273,10 +273,9 @@ export const Inputs: Record<string, RenderInputProps[]> = {
       placeholder: "Masukan Jurusan Anda",
       element: "select" as const,
       options: [
-        {key: "RPL", label: "Perangkat Lunak dan GIM"},
-        {key: "TKJ", label: "Teknik Komputer dan Jaringan"},
-        {key: "TIF", label: "Teknik Informatika"},
-        {key: "TKR", label: "Teknik Komputer dan Robot"},
+        { key: "Akuntansi dan Keuangan Lembaga", label: "Akuntansi dan Keuangan Lembaga" },
+        { key: "Pengembangan Perangkat Lunak dan Gim", label: "Pengembangan Perangkat Lunak dan Gim" },
+        { key: "Teknik Jaringan Komputer dan Telekomunikasi", label: "Teknik Jaringan Komputer dan Telekomunikasi" },
       ],
     },
     {
@@ -289,6 +288,11 @@ export const Inputs: Record<string, RenderInputProps[]> = {
         { key: "XI", label: "XI" },
         { key: "XII", label: "XII" },
       ],
+    },
+    {
+      label: 'Image',
+      name: 'image',
+      type: 'file',
     },
     {
       label: "Alamat",
@@ -328,4 +332,60 @@ export const Inputs: Record<string, RenderInputProps[]> = {
       element: "textArea" as const,
     },
   ],
+  Admin: [
+    {
+      label: 'Nama',
+      name: 'name',
+      type: 'text',
+      placeholder: 'Masukan Nama Anda',   
+    },
+    {
+      label: 'Email',
+      name: 'email',
+      type: 'email',
+      placeholder: 'Masukan Email Anda',
+    },
+    {
+      label: 'Password',
+      name: 'password',
+      type: 'password',
+      placeholder: 'Masukan Password Anda',
+    },
+    {
+      label: 'Role',
+      name: 'role',
+      type: 'text',
+      element: 'select' as const,
+      options: [
+        { key: 'admin', label: 'Admin' },
+        { key: 'teacher', label: 'Teacher' },
+        { key: 'superadmin', label: 'Super Admin' },
+      ]
+    },
+    {
+      label: 'Image',
+      name: 'image',
+      type: 'file',
+    }
+  ]
 };
+
+export const Columns: Record<string, { key: string; label: string }[]> = {
+  nasabah: [
+    { key: "id", label: "ID" },
+    { key: "nisn", label: "NISN" },
+    { key: "name", label: "Nama" },
+    { key: "gender", label: "Jenis Kelamin" },
+    { key: "major", label: "Jurusan" },
+    { key: "class", label: "Kelas" },
+    { key: "balance", label: "Saldo" },
+    { key: "action", label: "Aksi" },
+  ],
+  admin: [
+    { key: "id", label: "ID" },
+    { key: "name", label: "Nama" },
+    { key: "email", label: "Email" },
+    { key: "role", label: "Role" },
+    { key: "action", label: "Action" },
+  ]
+}

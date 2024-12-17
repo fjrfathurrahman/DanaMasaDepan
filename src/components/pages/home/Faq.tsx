@@ -8,8 +8,8 @@ import { IoIosArrowBack } from "react-icons/io";
 
 export const Faq = () => {
   return (
-    <Layout.Section className="dark:bg-darkSecondary">
-      <Layout.Container sizing={["h-max"]} className="mb-12">
+    <Layout.Section className="dark:bg-darkSecondary bg-lightSecondary">
+      <Layout.Container sizing={["h-max"]}>
         <Title text="Informasi dan Pertanyaan Umum" />
 
         <Accordion defaultExpandedKeys={["2"]} variant="light">

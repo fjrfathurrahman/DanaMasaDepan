@@ -1,32 +1,24 @@
-interface Transaction {
-  type: "deposit" | "withdrawal";
-  amount: number;
-  customer: {
-    balance: number;
-  };
-}
+import { RowTransactionProps } from "../types/Types";
 
 // * Function to calculate total deposit (Deposit)
-export function calculateTotalDeposit(transactions: Transaction[] = []) {
-  const result = transactions
-    .filter((t) => t.type === "deposit")
-    .reduce((sum, t) => sum + t.amount, 0);
+export function calculateTotalDeposit(transactions: RowTransactionProps[] = []) {
+  const result = transactions?.filter((t) => t.type === "deposit")
+    .reduce((sum, t) => sum + parseFloat(t.amount?.toString() ?? "0"), 0);
   
     return formatCurrency(result);
 }
 
 // * Function to calculate total withdrawal (Penarikan)
-export function calculateTotalWithdrawal(transactions: Transaction[] = []) {
-  const result = transactions
-    .filter((t) => t.type === "withdrawal")
-    .reduce((sum, t) => sum + t.amount, 0);
+export function calculateTotalWithdrawal(transactions: RowTransactionProps[] = []) {
+  const result = transactions?.filter((t) => t.type === "withdrawal")
+    .reduce((sum, t) => sum + parseFloat(t.amount?.toString() ?? "0"), 0);
 
   return formatCurrency(result);
 }
 
 // * Function to calculate total balance (Saldo)
 export function calculateTotalBalance(customers: { balance: number }[] = []) {
-  const result = customers.reduce((sum, customer) => sum + customer.balance, 0);
+  const result = customers?.reduce((sum, customer) => sum + parseFloat(customer.balance?.toString() ?? "0"), 0);
 
   return formatCurrency(result);
 }

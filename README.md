@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Dana Masa Depan - Tabungan Online**
 
-## Getting Started
+**Dana Masa Depan** adalah sebuah website tabungan online yang memudahkan pengelolaan dana untuk masa depan. Website ini dibangun menggunakan **Next.js** sebagai frontend dan **Laravel** sebagai backend yang menyediakan API berbasis **RESTful** untuk menangani data. 
 
-First, run the development server:
+## **Stack Teknologi**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Frontend**: 
+  - **Next.js** (React Framework)
+  - **Tailwind CSS** untuk styling
+  - **Axios** untuk request API
+  - **React Query** untuk pengelolaan data fetching
+  - **React Hook Form** dan **Zod** untuk form handling dan validasi
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Backend**: 
+  - **Laravel** (PHP Framework)
+  - **RESTful API** untuk komunikasi antara frontend dan backend
+  - **MySQL** untuk database
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **Fitur yang Telah Dibuat**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Autentikasi dan Manajemen Pengguna**: 
+  - Fitur login dan Fitur logout
 
-## Learn More
+- **CRUD Admin**: 
+  - Admin dapat melakukan operasi CRUD (Create, Read, Update, Delete) pada data admin.
 
-To learn more about Next.js, take a look at the following resources:
+- **Fitur Tabungan**:
+  - Menambahkan dan mengelola tabungan pengguna.
+  - Fitur transaksi untuk setoran dan penarikan dana (Perlu diperbaiki).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Manajemen Transaksi**:
+  - Menampilkan daftar transaksi yang dilakukan oleh admin dan jumlah seluruh Deposit, Withdrawal dan seluruh total saldo.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Search dan Filter**: 
+  - Fungsi pencarian dan filter untuk mencari data berdasarkan keyword yang diberikan.
 
-## Deploy on Vercel
+## **Langkah Selanjutnya**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Pengembangan Pages**: 
+  - Page Not Found 404
+  - Page Detail Nasabah (Admin)
+  - Page Profil Admin
+  
+- **Fitur**:
+  - Memperbaiki Theme DarkMode
+  - Print Struk Transaksi
+  - Fitur Riwayat 

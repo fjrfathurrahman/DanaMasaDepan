@@ -5,7 +5,7 @@ import { toast } from "sonner";
 export default function usePostAdmin() {
   return useMutation({
     mutationFn: async (formData: FormData) => {
-      const response = axiosInstance.post("/register", formData);
+      const response = axiosInstance.post("/admins", formData);
       await new Promise((resolve) => setTimeout(resolve, 1500));
       
       return response;

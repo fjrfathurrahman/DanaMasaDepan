@@ -13,8 +13,8 @@ export type TailwindSpacing = Responsive<
   | 'my-4' | 'my-8' | 'my-12' | 'my-14' | 'my-16' | 'my-20' | 'my-24' | 'my-auto'
   | 'mb-4' | 'mb-8' | 'mb-12' | 'mb-14' | 'mb-16' | 'mb-20' | 'mb-24' | 'mb-auto'
   | 'mt-4' | 'mt-8' | 'mt-12' | 'mt-14' | 'mt-16' | 'mt-20' | 'mt-24' | 'mt-auto'
-  | 'p-0' | 'p-4' | 'p-8' | 'p-12' | 'p-14' | 'p-16' | 'p-20' | 'p-24'
-  | 'py-4' | 'py-8' | 'py-12' | 'py-14' | 'py-16' | 'py-20' | 'py-24' | 'py-28' | 'py-36'
+  | 'p-0' | 'p-4' | 'py-6' | 'p-8' | 'p-12' | 'p-14' | 'p-16' | 'p-20' | 'p-24'
+  | 'p-0' | 'py-4' | 'py-6' | 'py-8' | 'py-12' | 'py-14' | 'py-16' | 'py-20' | 'py-24' | 'py-28' | 'py-36'
 >;
 
 export type TailwindFlexbox = Responsive<

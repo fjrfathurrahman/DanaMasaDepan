@@ -2,13 +2,10 @@
 
 import formatDate from "@/lib/utils/FormatDate";
 import ToggleTheme from "../fragments/ToggleTheme";
-import Icon from "../common/Icon";
-import Link from "next/link";
 import { Layout } from "../modules/import";
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger} from "@nextui-org/react";
 import { Icons } from "@/lib/resource/icons";
 import { usePathname, useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { CustomDropdown } from "../fragments/DropdownCustom";
 
 export const NavbarDashboard = () => {
   const path = usePathname();
@@ -29,37 +26,12 @@ export const NavbarDashboard = () => {
 
       <div className="flex gap-3">
         <ToggleTheme />
-        <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <Button isIconOnly variant="light" color="primary">
-              <Icon icon={Icons.MdMenu} />
-            </Button>
-          </DropdownTrigger>
-
-          <DropdownMenu aria-label="Menu Links">
-            <DropdownSection title="Links" showDivider>
-              {Menu.links.map((item) => (
-                <DropdownItem key={item.title} color={path === item.href ? "primary" : "default"} className={path === item.href ? "text-primary" : undefined} startContent={item.icon ? <Icon icon={item.icon} size="sm" /> : null}>
-                  <Link href={item.href} passHref>{item.title}</Link>
-                </DropdownItem>
-              ))}
-            </DropdownSection>
-
-            <DropdownSection title="Services" showDivider>
-              {Menu.services.map((item) => (
-                <DropdownItem key={item.title} color={item.name === "Logout" ? "danger" : "default"} variant={item.name === "Logout" ? "bordered" : "light"} className={item.name === "Logout" ? "text-danger" : undefined}
-                  startContent={
-                    item.icon ? <Icon icon={item.icon} size="sm" /> : null
-                  }
-                >
-                  <button type="button" onClick={item.name === "Logout" ? () => handleLogout() : () => toast.info('Fitur belum tersedia')}>
-                    {item.title}
-                  </button>
-                </DropdownItem>
-              ))}
-            </DropdownSection>
-          </DropdownMenu>
-        </Dropdown>
+        <CustomDropdown
+          links={Menu.links}
+          services={Menu.services}
+          path={path}
+          onLogout={handleLogout}
+        />
       </div>
     </Layout.Box>
   );
@@ -74,7 +46,7 @@ const Menu = {
     },
     {
       title: "Nasabah",
-      href: "/dashboard/tableNasabah",
+      href: "/dashboard/nasabah",
       icon: Icons.FiUsers,
     },
     {

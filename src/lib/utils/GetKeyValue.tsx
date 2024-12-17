@@ -17,11 +17,11 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
       return item.admin?.name;
 
     case "type":
-      return item.type === "deposit" ? (
-        <Chip color="success" variant="flat">Deposit</Chip>
-      ) : item.type === "withdrawal" ? (
-        <Chip color="danger" variant="flat">Withdrawal</Chip>
-      ) : null;
+      return <Chip color={item.type === 'deposit' ? 'success' : item.type === 'withdrawal' ? 'danger' : 'default'} variant="flat">{item.type === 'deposit' ? 'Deposit' : item.type === 'withdrawal' ? 'Withdrawal' : null}</Chip> 
+
+    case "role":
+      return <Chip color={item.role === 'admin' ? 'primary' : item.role === 'teacher' ? 'success' : item.role === 'superadmin' ? 'danger' : 'default'} variant="flat" className="capitalize">{item.role}</Chip>
+    
     case "amount":
       return <Chip color="primary" variant="flat">{formatCurrency(item.amount as number)}</Chip>
 
@@ -53,6 +53,9 @@ export default function GetKeyValue( item: RowProps, columnKey: string, index: n
           </Link>
         </Button>
       )
+    
+    case "major":
+      return <span className="line-clamp-1 text-small">{item.major}</span>
 
     default:
       return item[columnKey] as React.ReactNode ?? "-";
