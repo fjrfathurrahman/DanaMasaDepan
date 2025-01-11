@@ -19,9 +19,7 @@ export default function UpdateAdmin({params}: {params: {id: string}}) {
     if (data.email) formData.append("email", data.email);
     if (data.password) formData.append("password", data.password);
     if (data.role) formData.append("role", data.role);
-    if (data.image) {
-      formData.append("image", data.image[0]);
-    }
+    if (data.image) formData.append("image", data.image[0]);
 
     mutate({ id: params.id, formData });
   };

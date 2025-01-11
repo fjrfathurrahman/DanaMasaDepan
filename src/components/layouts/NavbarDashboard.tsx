@@ -1,18 +1,18 @@
 'use client';
 
-import formatDate from "@/lib/utils/FormatDate";
 import ToggleTheme from "../fragments/ToggleTheme";
 import { Layout } from "../modules/import";
 import { Icons } from "@/lib/resource/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { CustomDropdown } from "../fragments/DropdownCustom";
+import formatDateWithRelative from "@/lib/utils/FormatDateRelative";
 
 export const NavbarDashboard = () => {
   const path = usePathname();
   const router = useRouter();
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("islogin");
     localStorage.removeItem("adminId");
     router.push("/");
   };
@@ -21,17 +21,12 @@ export const NavbarDashboard = () => {
     <Layout.Box className="border-b pb-6 mb-8 flex justify-between items-center">
       <div>
         <h4 className="font-bold">Dashboard</h4>
-        <small>{formatDate()}</small>
+        <small>{formatDateWithRelative()}</small>
       </div>
 
       <div className="flex gap-3">
         <ToggleTheme />
-        <CustomDropdown
-          links={Menu.links}
-          services={Menu.services}
-          path={path}
-          onLogout={handleLogout}
-        />
+        <CustomDropdown links={Menu.links} services={Menu.services} path={path} onLogout={handleLogout}/>
       </div>
     </Layout.Box>
   );
@@ -66,7 +61,7 @@ const Menu = {
     {
       name: "Profile",
       title: "Profile",
-      href: "/",
+      href: "/dashboard/profile",
       icon: Icons.FiUser,
     },
     {

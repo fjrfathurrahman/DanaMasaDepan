@@ -3,7 +3,7 @@
 import { RowTransactionProps } from "@/lib/types/Types";
 import { Layout } from "@/components/modules/import";
 import useGetTransaction from "@/lib/hooks/transaksi/useGetTransaction";
-import formatDate from "@/lib/utils/FormatDate";
+import formatDateWithRelative from "@/lib/utils/FormatDateRelative";
 
 export default function DetailStruktur({ params }: { params: { id: string } }) {
   const { data, status } = useGetTransaction(params.id);
@@ -25,7 +25,7 @@ export default function DetailStruktur({ params }: { params: { id: string } }) {
           </div>
           <div className="flex justify-between *:py-0">
             <p>TANGGAL</p>
-            <p>{formatDate(transaction?.created_at)}</p>
+            <p>{formatDateWithRelative(transaction?.created_at)}</p>
           </div>
         </div>
 

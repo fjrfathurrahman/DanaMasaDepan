@@ -4,30 +4,26 @@ import Field from "@/components/common/Field";
 import useUpdateNasabah from "@/lib/hooks/nasabah/useUpdateNasabah";
 import { Form } from "@/components/fragments/Form";
 import { Inputs } from "@/lib/resource";
-import { CostumerShema, ShemaCostumer } from "@/lib/schema";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { ShemaCostumer } from "@/lib/schema";
 import { FormProvider, useForm } from "react-hook-form";
 
 export default function UpdateNasabah({ params }: { params: { id: string } }) {
-  const methods = useForm<ShemaCostumer>({
-    resolver: zodResolver(CostumerShema),
-    mode: "onChange",
-  });
-
+  const methods = useForm<ShemaCostumer>();
   const { mutate, isPending } = useUpdateNasabah();
 
   const onSubmit = (data: ShemaCostumer) => {
     const formData = new FormData();
 
     formData.append("_method", "PUT");
-    formData.append("nisn", data.nisn);
-    formData.append("name", data.name);
-    formData.append("gender", data.gender);
-    formData.append("major", data.major);
-    formData.append("class", data.class);
-    formData.append("address", data.address);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
+    if (data.nisn) formData.append("nisn", data.nisn);
+    if (data.name) formData.append("name", data.name);
+    if (data.gender) formData.append("gender", data.gender);
+    if (data.major) formData.append("major", data.major);
+    if (data.class) formData.append("class", data.class);
+    if (data.address) formData.append("address", data.address);
+    if (data.email) formData.append("email", data.email);
+    if (data.phone) formData.append("phone", data.phone.toString());
+    if (data.image[0]) formData.append("image", data.image[0]);
 
     mutate({ id: params.id, formData });
   };
@@ -44,7 +40,7 @@ export default function UpdateNasabah({ params }: { params: { id: string } }) {
           </p>
         </Form.Header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8 border-t">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Inputs.Nasabah.map((item) => (
             <Field key={item.name} {...item} />
           ))}

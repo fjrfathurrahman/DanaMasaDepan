@@ -17,9 +17,9 @@ export default function TambahNasabah() {
 
     formData.append("nisn", data.nisn);
     formData.append("name", data.name);
-    formData.append("gender", data.gender ?? '-');
-    formData.append("major", data.major ?? '-');
-    formData.append("class", data.class ?? '-');
+    formData.append("gender", data.gender);
+    formData.append("major", data.major);
+    formData.append("class", data.class);
     formData.append("address", data.address);
     formData.append("email", data.email);
     formData.append("phone", data.phone.toString());

@@ -10,8 +10,8 @@ export const InitializeTheme = () => {
   const { theme, toggleTheme } = Theme();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const initialTheme = savedTheme || 'dark';
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+    const initialTheme = savedTheme || 'light';
 
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
     if (initialTheme !== theme) {
@@ -22,7 +22,7 @@ export const InitializeTheme = () => {
 
 
 export const Theme = create<ThemeState>((set) => ({
-  theme: 'dark',
+  theme: 'light',
   toggleTheme: () =>
     set((state) => {
       const newTheme = state.theme === 'light' ? 'dark' : 'light';

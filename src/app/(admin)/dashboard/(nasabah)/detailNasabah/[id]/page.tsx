@@ -1,38 +1,28 @@
 "use client";
 
 import useGetNasabah from "@/lib/hooks/nasabah/useGetNasabah";
-import { Image } from "@nextui-org/react";
+import useGetTransaction from "@/lib/hooks/transaksi/useGetTransaction";
+import Icon from "@/components/common/Icon";
+import FilteredTransactions from "@/lib/utils/FilteredTransactions";
+import { DetailNasabahLayout } from "@/components/layouts/DetailNasabahLayout";
+import { TbListDetails } from "react-icons/tb";
 
 export default function DetailNasabah({ params }: { params: { id: string } }) {
-  const { data } = useGetNasabah(params.id);
+  const { data: nasabah, status } = useGetNasabah(params.id);
+  const { data: transactions, status: statusTransaction } = useGetTransaction();
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 my-12">
-      <Image src="https://dummyimage.com/600x400/000/fff" alt="Nasabah" className="object-cover rounded-3xl w-full" height={400} />
-
+    <DetailNasabahLayout header={{ profile: nasabah?.image, status: status }} nasabah={nasabah}>
       <div>
-        <h3 className="line-clamp-2 pb-4 border-b">{data?.name?? '-'}</h3>
-        
-        <div className="py-4 space-4">
-
-          <div>
-            <span>NISN:</span>
-            <p>{data?.nisn}</p>
-          </div>
-          
-          <div>
-            <span>Jenis Kelamin:</span>
-            <p>{data?.gender}</p>
-          </div>
-          
-          <div>
-            <span>Jurusan:</span>
-            <p>{data?.major}</p>
-          </div>
-
+        <div className="flex gap-2 items-center pb-2 border-b-2">
+          <Icon icon={TbListDetails} />
+          <h5>Transaksi Terakhir</h5>
         </div>
 
+        <div className="space-y-4">
+          {FilteredTransactions({ transactions, params, statusTransaction })}
+        </div>
       </div>
-    </div>
+    </DetailNasabahLayout>
   );
 }

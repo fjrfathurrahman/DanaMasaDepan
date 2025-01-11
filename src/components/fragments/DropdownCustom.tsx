@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 interface DropdownProps {
   links: { title: string; href: string; icon?: IconType }[];
-  services: { title: string; name: string; icon?: IconType }[];
+  services: { title: string; name: string; icon?: IconType, href: string }[];
   path: string;
   onLogout: () => void;
 }
@@ -46,7 +46,7 @@ export const CustomDropdown: React.FC<DropdownProps> = ({ links, services, path,
           {services.map((item) => (
             <DropdownItem
               key={item.title}
-              onClick={item.name === "Logout" ? () => onLogout() : () => toast.info("Fitur belum tersedia")}
+              onClick={item.name === "Logout" ? () => onLogout() : item.href ? () => null : () => toast.info("Fitur belum tersedia")}
               color={item.name === "Logout" ? "danger" : "default"}
               variant={item.name === "Logout" ? "bordered" : "light"}
               className={item.name === "Logout" ? "text-danger" : undefined}
@@ -54,7 +54,7 @@ export const CustomDropdown: React.FC<DropdownProps> = ({ links, services, path,
                 item.icon ? <Icon icon={item.icon} size="sm" /> : null
               }
             >
-              {item.title}
+              {item.href ? <Link href={item.href}>{item.title}</Link> : item.name}
             </DropdownItem>
           ))}
         </DropdownSection>

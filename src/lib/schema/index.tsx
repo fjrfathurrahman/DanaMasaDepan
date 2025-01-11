@@ -15,9 +15,9 @@ const CostumerShema = z.object({
   name: z.string().min(3, 'Nama tidak boleh kosong atau kurang dari 3 karakter').max(500, 'Nama maksimal 500 karakter'),
   email: z.string().email({message: 'Format email salah'}),
   phone: z.string().min(8, 'Nomor minimal 8 karakter').max(15, 'Nomor maksimal 15 karakter'),
-  gender: z.enum(['Laki-laki', 'Perempuan', '-'], { message: 'Pilih salah satu jenis kelamin' }),
-  major: z.enum(['Akuntansi dan Keuangan Lembaga', 'Pengembangan Perangkat Lunak dan Gim', 'Teknik Jaringan Komputer dan Telekomunikasi', '-'], { message: 'Pilih salah satu jurusan'}),
-  class: z.enum(['X', 'XI', 'XII', '-'], { message: 'Pilih salah satu kelas' }),
+  gender: z.enum(['Laki-laki', 'Perempuan', ''], { message: 'Pilih salah satu jenis kelamin' }),
+  major: z.enum(['Akuntansi dan Keuangan Lembaga', 'Pengembangan Perangkat Lunak dan Gim', 'Teknik Jaringan Komputer dan Telekomunikasi', ''], { message: 'Pilih salah satu jurusan'}),
+  class: z.enum(['X', 'XI', 'XII', ''], { message: 'Pilih salah satu kelas' }),
   image: z.custom<FileList>().refine((files) =>!files || ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type), "Hanya format .jpg, .jpeg, .png, .gif dan .svg yang didukung"),
   address: z.string().min(3, 'Alamat tidak boleh kosong atau kurang dari 3 karakter').max(1000, 'Alamat maksimal 1000 karakter'),
 })
